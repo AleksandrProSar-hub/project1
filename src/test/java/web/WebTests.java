@@ -6,10 +6,19 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
@@ -21,14 +30,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class WebTests {
 
     @BeforeEach
-    public  void main() {
+    public  void main() throws MalformedURLException {
+        /*
+        // Настройка ChromeOptions пытаюсь побороть Timed out receiving message from renderer
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-gpu");
+        Configuration.headless = true; // Устанавливаем режим без графики пытаюсь побороть Timed out receiving message from renderer
         // Установка размера окна браузера
         Configuration.browserSize = "1200x720";
+        // Укажите URL вашего Selenoid
+        Configuration.remote = "http://92.242.60.182:4444/wd/hub";
+        // Укажите браузер и его версию
+        Configuration.browser = "chrome";
+        // или любой другой поддерживаемый браузер
+        Configuration.browserVersion = "128.0"; */
+
+    }
+    // возможно лишний кусок
+    @AfterEach
+    public void main2() {
+        Selenide.closeWebDriver();
     }
 
     @Test
     @DisplayName("Хедер. Изменение валюты")
     void headerChangingCurrency() {
+
         open("https://www.wildberries.ru/");
         $(".simple-menu__item.header__currency.j-b-header-country").hover();
         $(".country").find(byText("Казахстанский тенге")).click();
