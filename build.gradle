@@ -34,7 +34,7 @@ test {
     useJUnitPlatform()
 }
 
-task simple_test(type: Test) {
+task backend_test(type: Test) {
     useJUnitPlatform{
         includeTags("backend")  // тут было указано "simple"
     }
