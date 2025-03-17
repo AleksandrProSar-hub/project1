@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -31,20 +32,20 @@ public class WebTests {
 
     @BeforeEach
     public  void main() throws MalformedURLException {
-        /*
-        // Настройка ChromeOptions пытаюсь побороть Timed out receiving message from renderer
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-gpu");
-        Configuration.headless = true; // Устанавливаем режим без графики пытаюсь побороть Timed out receiving message from renderer
-        // Установка размера окна браузера
-        Configuration.browserSize = "1200x720";
-        // Укажите URL вашего Selenoid
-        Configuration.remote = "http://92.242.60.182:4444/wd/hub";
-        // Укажите браузер и его версию
+        //Url удалённого веб драйвера
+        Configuration.remote = "http://192.168.0.103:4444/wd/hub";
+        //Определяем какой браузер будем использовать
         Configuration.browser = "chrome";
-        // или любой другой поддерживаемый браузер
-        Configuration.browserVersion = "128.0"; */
+        //Размер окна браузера
+        Configuration.browserSize = "1920x1080";
+        //Создаём объект класса DesiredCapabilities, используется как настройка  вашей конфигурации с помощью пары ключ-значение
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
+        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            put("enableVideo", true);
+        }});
+
+        Configuration.browserCapabilities = capabilities;
     }
     // возможно лишний кусок
     @AfterEach
@@ -195,7 +196,7 @@ public class WebTests {
     @DisplayName("Корзина. Уменьшение количества товара")
     void basketReducingQuantityGoods() {
 
-        open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
+        open("https://www.wildberries.ru/catalog/102721617/detail.aspx");
         $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".navbar-pc__item.j-item-basket").click();
         $(".accordion__goods-count").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("1 товар"));
