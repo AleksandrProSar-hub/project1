@@ -34,9 +34,9 @@ test {
     useJUnitPlatform()
 }
 
-task web_test(type: Test) {
+task backend_test(type: Test) {
     useJUnitPlatform{
-        includeTags("web")  // тут было указано "simple"
+        // includeTags("web")  // тут было указано "simple" запускает тесты с определенным тегом
     }
 }
 
