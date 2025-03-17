@@ -6,6 +6,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -56,7 +58,7 @@ public class WebTests {
     @Test
     @DisplayName("headerChangingCurrency")
     void headerChangingCurrency() {
-
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".simple-menu__item.header__currency.j-b-header-country").hover();
         $(".country").find(byText("Казахстанский тенге")).click();
@@ -67,6 +69,7 @@ public class WebTests {
     @Test
     @DisplayName("Хедер. Переход в доставку")
     void headerSwitchingToDelivery() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".navbar-pc__item.j-item-addresses").find(byText("Адреса")).click();
         $(".service-menu__item.selected").shouldHave(text("Доставка"));
@@ -78,6 +81,7 @@ public class WebTests {
     @Test
     @DisplayName("Хедер. Переход в корзину")
     void headerSwitchingToBasket() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".navbar-pc__item.j-item-basket").find(byText("Корзина")).click();
         $(".basket-page__basket-empty.basket-empty").shouldHave(text("В корзине пока пусто"));
@@ -86,6 +90,7 @@ public class WebTests {
     @Test
     @DisplayName("Хедер. Продавайте на Wildberries")
     void headerSwitchingToSell() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".header__simple-menu.simple-menu").find(withText("Продавайте")).click();
         switchTo().window(1);
@@ -96,6 +101,7 @@ public class WebTests {
     @Test
     @DisplayName("Хедер. Работа в Wildberries")
     void headerSwitchingToWork() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".header__simple-menu.simple-menu").find(withText("Работа")).click();
         switchTo().window(1);
@@ -106,6 +112,7 @@ public class WebTests {
     @Test
     @DisplayName("Хедер. Переход в авиабилеты")
     void headerSwitchingToAirlineTicket() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".header__simple-menu.simple-menu").find(withText("Авиабилеты")).click();
         switchTo().window(1);
@@ -117,6 +124,7 @@ public class WebTests {
     @Test
     @DisplayName("Корзина. Переход из пустой корзины на главную")
     void basketGoMainPage() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/lk/basket");
         $(".basket-empty__wrap").shouldHave(text("В корзине пока пусто"));
         $(".basket-empty__wrap").find(withText("Перейти на главную")).click();
@@ -126,6 +134,7 @@ public class WebTests {
     @Test
     @DisplayName("Корзина. Удаление товара")
     void basketDeleteGoods() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/");
         $(".product-card__link.j-card-link.j-open-full-product-card").shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
@@ -138,7 +147,7 @@ public class WebTests {
     @Test
     @DisplayName("Корзина. Увеличение количества товара")
     void basketIncreasingQuantityGoods() {
-
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
         $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".navbar-pc__item.j-item-basket").click();
@@ -195,7 +204,7 @@ public class WebTests {
     @Test
     @DisplayName("Корзина. Уменьшение количества товара")
     void basketReducingQuantityGoods() {
-
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/catalog/102721617/detail.aspx");
         $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".navbar-pc__item.j-item-basket").click();
@@ -247,6 +256,7 @@ public class WebTests {
     @Test
     @DisplayName("Карточка товара. Переход в отзывы через оценку")
     void productCardSwitchingToReviewsViaRating() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
         $("#comments_reviews_link").shouldBe(visible, Duration.ofSeconds(15)).click();
         webdriver().shouldHave(url("https://www.wildberries.ru/catalog/218488991/feedbacks?imtId=298362116"));
@@ -257,6 +267,7 @@ public class WebTests {
     @Test
     @DisplayName("Карточка товара. Переход в отзывы через кнопку Смотреть все отзывы")
     void productCardSwitchingToReviewsViaButton() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
 
         try {
@@ -273,6 +284,7 @@ public class WebTests {
     @Test
     @DisplayName("Карточка товара. Переход в характеристики")
     void productCardSwitchingToSpecifications() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
         $(".product-page__btn-detail.hide-mobile.j-details-btn-desktop").shouldBe(Condition.appear).click();
         $(".popup.popup-product-details.shown").shouldHave(text("Характеристики и описание"));
@@ -284,6 +296,7 @@ public class WebTests {
     @Test
     @DisplayName("Вход. Попытка входа без номера")
     void incorrectEntry() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru");
         $(".navbar-pc__link.j-main-login.j-wba-header-item").shouldBe(Condition.appear).click();
         $(".popup.popup-auth-base.shown").shouldHave(text("Войти или создать профиль"));
@@ -294,6 +307,7 @@ public class WebTests {
     @Test
     @DisplayName("Поиск. Корпус для ПК")
     void SearchText() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru");
         $("#searchInput").setValue("корпус для пк").pressEnter();
         $(".searching-results__title").shouldBe(Condition.appear).shouldHave(text("корпус для пк"));
@@ -307,6 +321,7 @@ public class WebTests {
     @Test
     @DisplayName("Поиск. Поиск по фото")
     void searchPhoto() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru");
         $("#searchByImageFormAbNew").click();
         $("#popUpFileInput").uploadFromClasspath("sampleFile.jpeg");
@@ -318,6 +333,7 @@ public class WebTests {
     @Test
     @DisplayName("Поиск. Неккоректный поиск")
     void searchUncorrected() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://www.wildberries.ru");
         $("#searchInput").setValue("**").pressEnter();
         $(".not-found-search__title").shouldHave(text("Ничего не нашлось по запросу"));
