@@ -40,6 +40,11 @@ task simple_test(type: Test) {
     }
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
 allure {
     report {
         version.set("2.17.3") //версия Allure Report (https://github.com/allure-framework/allure2)

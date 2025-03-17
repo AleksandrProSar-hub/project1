@@ -32,13 +32,13 @@ public class WebTests {
 
     @BeforeEach
     public  void main() throws MalformedURLException {
-        //Url удалённого веб драйвера
+        //Url СѓРґР°Р»С‘РЅРЅРѕРіРѕ РІРµР± РґСЂР°Р№РІРµСЂР°
         Configuration.remote = "http://192.168.0.103:4444/wd/hub";
-        //Определяем какой браузер будем использовать
+        //РћРїСЂРµРґРµР»СЏРµРј РєР°РєРѕР№ Р±СЂР°СѓР·РµСЂ Р±СѓРґРµРј РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
         Configuration.browser = "chrome";
-        //Размер окна браузера
+        //Р Р°Р·РјРµСЂ РѕРєРЅР° Р±СЂР°СѓР·РµСЂР°
         Configuration.browserSize = "1920x1080";
-        //Создаём объект класса DesiredCapabilities, используется как настройка  вашей конфигурации с помощью пары ключ-значение
+        //РЎРѕР·РґР°С‘Рј РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° DesiredCapabilities, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РєР°Рє РЅР°СЃС‚СЂРѕР№РєР°  РІР°С€РµР№ РєРѕРЅС„РёРіСѓСЂР°С†РёРё СЃ РїРѕРјРѕС‰СЊСЋ РїР°СЂС‹ РєР»СЋС‡-Р·РЅР°С‡РµРЅРёРµ
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
@@ -47,215 +47,215 @@ public class WebTests {
 
         Configuration.browserCapabilities = capabilities;
     }
-    // возможно лишний кусок
+    // РІРѕР·РјРѕР¶РЅРѕ Р»РёС€РЅРёР№ РєСѓСЃРѕРє
     @AfterEach
     public void main2() {
         Selenide.closeWebDriver();
     }
 
     @Test
-    @DisplayName("Хедер. Изменение валюты")
+    @DisplayName("headerChangingCurrency")
     void headerChangingCurrency() {
 
         open("https://www.wildberries.ru/");
         $(".simple-menu__item.header__currency.j-b-header-country").hover();
-        $(".country").find(byText("Казахстанский тенге")).click();
+        $(".country").find(byText("РљР°Р·Р°С…СЃС‚Р°РЅСЃРєРёР№ С‚РµРЅРіРµ")).click();
         $(".simple-menu__item.header__currency.j-b-header-country").shouldHave(text("KZT"));
-        $(".product-card__price.price").shouldHave(text("тг"));
+        $(".product-card__price.price").shouldHave(text("С‚Рі"));
     }
 
     @Test
-    @DisplayName("Хедер. Переход в доставку")
+    @DisplayName("РҐРµРґРµСЂ. РџРµСЂРµС…РѕРґ РІ РґРѕСЃС‚Р°РІРєСѓ")
     void headerSwitchingToDelivery() {
         open("https://www.wildberries.ru/");
-        $(".navbar-pc__item.j-item-addresses").find(byText("Адреса")).click();
-        $(".service-menu__item.selected").shouldHave(text("Доставка"));
-        $(".c-h1").shouldHave(text("Доставка"));
-        $(".delivery-banner").shouldHave(text("Быстро доставим любой Ваш заказ по всей России"));
-        $("#terms-delivery").shouldHave(text("Информация о доставке и пунктах выдачи"));
+        $(".navbar-pc__item.j-item-addresses").find(byText("РђРґСЂРµСЃР°")).click();
+        $(".service-menu__item.selected").shouldHave(text("Р”РѕСЃС‚Р°РІРєР°"));
+        $(".c-h1").shouldHave(text("Р”РѕСЃС‚Р°РІРєР°"));
+        $(".delivery-banner").shouldHave(text("Р‘С‹СЃС‚СЂРѕ РґРѕСЃС‚Р°РІРёРј Р»СЋР±РѕР№ Р’Р°С€ Р·Р°РєР°Р· РїРѕ РІСЃРµР№ Р РѕСЃСЃРёРё"));
+        $("#terms-delivery").shouldHave(text("РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕСЃС‚Р°РІРєРµ Рё РїСѓРЅРєС‚Р°С… РІС‹РґР°С‡Рё"));
     }
 
     @Test
-    @DisplayName("Хедер. Переход в корзину")
+    @DisplayName("РҐРµРґРµСЂ. РџРµСЂРµС…РѕРґ РІ РєРѕСЂР·РёРЅСѓ")
     void headerSwitchingToBasket() {
         open("https://www.wildberries.ru/");
-        $(".navbar-pc__item.j-item-basket").find(byText("Корзина")).click();
-        $(".basket-page__basket-empty.basket-empty").shouldHave(text("В корзине пока пусто"));
+        $(".navbar-pc__item.j-item-basket").find(byText("РљРѕСЂР·РёРЅР°")).click();
+        $(".basket-page__basket-empty.basket-empty").shouldHave(text("Р’ РєРѕСЂР·РёРЅРµ РїРѕРєР° РїСѓСЃС‚Рѕ"));
     }
 
     @Test
-    @DisplayName("Хедер. Продавайте на Wildberries")
+    @DisplayName("РҐРµРґРµСЂ. РџСЂРѕРґР°РІР°Р№С‚Рµ РЅР° Wildberries")
     void headerSwitchingToSell() {
         open("https://www.wildberries.ru/");
-        $(".header__simple-menu.simple-menu").find(withText("Продавайте")).click();
+        $(".header__simple-menu.simple-menu").find(withText("РџСЂРѕРґР°РІР°Р№С‚Рµ")).click();
         switchTo().window(1);
         webdriver().shouldHave(url("https://seller.wildberries.ru/about-portal/ru?redirect_url=https%3A%2F%2Fseller.wildberries.ru%2F"));
-        $(".preview_Preview__title__3xDP1").shouldHave(text("За каждой продажей стоят предприниматели"));
+        $(".preview_Preview__title__3xDP1").shouldHave(text("Р—Р° РєР°Р¶РґРѕР№ РїСЂРѕРґР°Р¶РµР№ СЃС‚РѕСЏС‚ РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»Рё"));
     }
 
     @Test
-    @DisplayName("Хедер. Работа в Wildberries")
+    @DisplayName("РҐРµРґРµСЂ. Р Р°Р±РѕС‚Р° РІ Wildberries")
     void headerSwitchingToWork() {
         open("https://www.wildberries.ru/");
-        $(".header__simple-menu.simple-menu").find(withText("Работа")).click();
+        $(".header__simple-menu.simple-menu").find(withText("Р Р°Р±РѕС‚Р°")).click();
         switchTo().window(1);
         webdriver().shouldHave(url("https://career.wb.ru/"));
-        $(".Home_welcomeBlockWrapper__h_RWh").shouldHave(text("Вместе мы сможем больше"));
+        $(".Home_welcomeBlockWrapper__h_RWh").shouldHave(text("Р’РјРµСЃС‚Рµ РјС‹ СЃРјРѕР¶РµРј Р±РѕР»СЊС€Рµ"));
     }
 
     @Test
-    @DisplayName("Хедер. Переход в авиабилеты")
+    @DisplayName("РҐРµРґРµСЂ. РџРµСЂРµС…РѕРґ РІ Р°РІРёР°Р±РёР»РµС‚С‹")
     void headerSwitchingToAirlineTicket() {
         open("https://www.wildberries.ru/");
-        $(".header__simple-menu.simple-menu").find(withText("Авиабилеты")).click();
+        $(".header__simple-menu.simple-menu").find(withText("РђРІРёР°Р±РёР»РµС‚С‹")).click();
         switchTo().window(1);
         webdriver().shouldHave(url("https://www.wildberries.ru/travel?entry_point=tab_header"));
-        $(".common_page__spm6Q").shouldHave(text("Популярные направления"));
-        $(".common_page__spm6Q").shouldHave(text("Дешевые авиабилеты"));
+        $(".common_page__spm6Q").shouldHave(text("РџРѕРїСѓР»СЏСЂРЅС‹Рµ РЅР°РїСЂР°РІР»РµРЅРёСЏ"));
+        $(".common_page__spm6Q").shouldHave(text("Р”РµС€РµРІС‹Рµ Р°РІРёР°Р±РёР»РµС‚С‹"));
     }
 
     @Test
-    @DisplayName("Корзина. Переход из пустой корзины на главную")
+    @DisplayName("РљРѕСЂР·РёРЅР°. РџРµСЂРµС…РѕРґ РёР· РїСѓСЃС‚РѕР№ РєРѕСЂР·РёРЅС‹ РЅР° РіР»Р°РІРЅСѓСЋ")
     void basketGoMainPage() {
         open("https://www.wildberries.ru/lk/basket");
-        $(".basket-empty__wrap").shouldHave(text("В корзине пока пусто"));
-        $(".basket-empty__wrap").find(withText("Перейти на главную")).click();
+        $(".basket-empty__wrap").shouldHave(text("Р’ РєРѕСЂР·РёРЅРµ РїРѕРєР° РїСѓСЃС‚Рѕ"));
+        $(".basket-empty__wrap").find(withText("РџРµСЂРµР№С‚Рё РЅР° РіР»Р°РІРЅСѓСЋ")).click();
         webdriver().shouldHave(url("https://www.wildberries.ru/"));
     }
 
     @Test
-    @DisplayName("Корзина. Удаление товара")
+    @DisplayName("РљРѕСЂР·РёРЅР°. РЈРґР°Р»РµРЅРёРµ С‚РѕРІР°СЂР°")
     void basketDeleteGoods() {
         open("https://www.wildberries.ru/");
         $(".product-card__link.j-card-link.j-open-full-product-card").shouldBe(visible, Duration.ofSeconds(15)).click();
-        $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
+        $(".product-page__order-buttons").find(withText("Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ")).shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".navbar-pc__item.j-item-basket").click();
-        $(".accordion__goods-count").shouldHave(text("1 товар"));
+        $(".accordion__goods-count").shouldHave(text("1 С‚РѕРІР°СЂ"));
         $(".btn__del.j-basket-item-del").click();
-        $(".basket-empty__wrap").shouldHave(text("В корзине пока пусто"));
+        $(".basket-empty__wrap").shouldHave(text("Р’ РєРѕСЂР·РёРЅРµ РїРѕРєР° РїСѓСЃС‚Рѕ"));
     }
 
     @Test
-    @DisplayName("Корзина. Увеличение количества товара")
+    @DisplayName("РљРѕСЂР·РёРЅР°. РЈРІРµР»РёС‡РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° С‚РѕРІР°СЂР°")
     void basketIncreasingQuantityGoods() {
 
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
-        $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
+        $(".product-page__order-buttons").find(withText("Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ")).shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".navbar-pc__item.j-item-basket").click();
-        $(".accordion__goods-count").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("1 товар"));
+        $(".accordion__goods-count").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("1 С‚РѕРІР°СЂ"));
 
-        // Пауза на 4 секунды, так как окончательная цена рассчитывается в процессе прогрузки страницы
+        // РџР°СѓР·Р° РЅР° 4 СЃРµРєСѓРЅРґС‹, С‚Р°Рє РєР°Рє РѕРєРѕРЅС‡Р°С‚РµР»СЊРЅР°СЏ С†РµРЅР° СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ РІ РїСЂРѕС†РµСЃСЃРµ РїСЂРѕРіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
         try {
-            Thread.sleep(4000); // Пауза на 3000 миллисекунд (3 секунды)
+            Thread.sleep(4000); // РџР°СѓР·Р° РЅР° 3000 РјРёР»Р»РёСЃРµРєСѓРЅРґ (3 СЃРµРєСѓРЅРґС‹)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Селекторы с ценами стоимости товара в количестве 1 шт
+        // РЎРµР»РµРєС‚РѕСЂС‹ СЃ С†РµРЅР°РјРё СЃС‚РѕРёРјРѕСЃС‚Рё С‚РѕРІР°СЂР° РІ РєРѕР»РёС‡РµСЃС‚РІРµ 1 С€С‚
         SelenideElement priceElement1 = $(".list-item__price-new.wallet");
         SelenideElement priceElement2 = $(".b-top__total.line span:nth-of-type(2)");
 
-        // Извлекаем текст цен
+        // РР·РІР»РµРєР°РµРј С‚РµРєСЃС‚ С†РµРЅ
         String priceText1 = priceElement1.getText();
         String priceText2 = priceElement2.getText();
-        // Пробую через сравнение чисел
+        // РџСЂРѕР±СѓСЋ С‡РµСЂРµР· СЃСЂР°РІРЅРµРЅРёРµ С‡РёСЃРµР»
         double priceNum1 = parsePrice(priceText1);
         double priceNum2 = parsePrice(priceText2);
         assertEquals(priceNum1, priceNum2);
-        // Сравниваем стоимость 1 шт в списке и в итого
+        // РЎСЂР°РІРЅРёРІР°РµРј СЃС‚РѕРёРјРѕСЃС‚СЊ 1 С€С‚ РІ СЃРїРёСЃРєРµ Рё РІ РёС‚РѕРіРѕ
         // assertEquals(priceText1, priceText2);
         $(".count__plus.plus").click();
-        $(".accordion__goods-count").shouldHave(text("2 товара"));
-        // Пауза на 4 секунды, так как окончательная цена рассчитывается в процессе прогрузки страницы
+        $(".accordion__goods-count").shouldHave(text("2 С‚РѕРІР°СЂР°"));
+        // РџР°СѓР·Р° РЅР° 4 СЃРµРєСѓРЅРґС‹, С‚Р°Рє РєР°Рє РѕРєРѕРЅС‡Р°С‚РµР»СЊРЅР°СЏ С†РµРЅР° СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ РІ РїСЂРѕС†РµСЃСЃРµ РїСЂРѕРіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
         try {
-            Thread.sleep(4000); // Пауза на 3000 миллисекунд (3 секунды)
+            Thread.sleep(4000); // РџР°СѓР·Р° РЅР° 3000 РјРёР»Р»РёСЃРµРєСѓРЅРґ (3 СЃРµРєСѓРЅРґС‹)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Селекторы с ценами стоимости товара в количестве 2 шт
+        // РЎРµР»РµРєС‚РѕСЂС‹ СЃ С†РµРЅР°РјРё СЃС‚РѕРёРјРѕСЃС‚Рё С‚РѕРІР°СЂР° РІ РєРѕР»РёС‡РµСЃС‚РІРµ 2 С€С‚
         SelenideElement priceElement3 = $(".list-item__price-new.wallet");
         SelenideElement priceElement4 = $(".b-top__total.line span:nth-of-type(2)");
-        // Извлекаем текст цен после изменения количества на 2 шт
+        // РР·РІР»РµРєР°РµРј С‚РµРєСЃС‚ С†РµРЅ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° РЅР° 2 С€С‚
         String priceText3 = priceElement3.getText();
         String priceText4 = priceElement4.getText();
-        // Сравниваем стоимость 2 шт в списке и в итого в текстовом формате они должны быть равны
+        // РЎСЂР°РІРЅРёРІР°РµРј СЃС‚РѕРёРјРѕСЃС‚СЊ 2 С€С‚ РІ СЃРїРёСЃРєРµ Рё РІ РёС‚РѕРіРѕ РІ С‚РµРєСЃС‚РѕРІРѕРј С„РѕСЂРјР°С‚Рµ РѕРЅРё РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂР°РІРЅС‹
         assertEquals(priceText3, priceText4);
-        // Преобразовываем текст в число для сравнения
+        // РџСЂРµРѕР±СЂР°Р·РѕРІС‹РІР°РµРј С‚РµРєСЃС‚ РІ С‡РёСЃР»Рѕ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
         // double priceNum1 = parsePrice(priceText1);
         double priceNum3 = parsePrice(priceText3);
         double priceNum4 = parsePrice(priceText2);
 
-        // Сравнение числовых значений
+        // РЎСЂР°РІРЅРµРЅРёРµ С‡РёСЃР»РѕРІС‹С… Р·РЅР°С‡РµРЅРёР№
         assertEquals(priceNum1 * 2, priceNum3);
     }
     private double parsePrice(String priceText) {
-        // Удаляем пробелы и символ "Р", а также преобразуем в число
+        // РЈРґР°Р»СЏРµРј РїСЂРѕР±РµР»С‹ Рё СЃРёРјРІРѕР» "Р ", Р° С‚Р°РєР¶Рµ РїСЂРµРѕР±СЂР°Р·СѓРµРј РІ С‡РёСЃР»Рѕ
         return Double.parseDouble(priceText.replaceAll("[^0-9]", ""));
     }
 
     @Test
-    @DisplayName("Корзина. Уменьшение количества товара")
+    @DisplayName("РљРѕСЂР·РёРЅР°. РЈРјРµРЅСЊС€РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° С‚РѕРІР°СЂР°")
     void basketReducingQuantityGoods() {
 
         open("https://www.wildberries.ru/catalog/102721617/detail.aspx");
-        $(".product-page__order-buttons").find(withText("Добавить в корзину")).shouldBe(visible, Duration.ofSeconds(15)).click();
+        $(".product-page__order-buttons").find(withText("Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ")).shouldBe(visible, Duration.ofSeconds(15)).click();
         $(".navbar-pc__item.j-item-basket").click();
-        $(".accordion__goods-count").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("1 товар"));
+        $(".accordion__goods-count").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("1 С‚РѕРІР°СЂ"));
         $(".count__plus.plus").click();
-        $(".accordion__goods-count").shouldHave(text("2 товара"));
-        // Пауза на 4 секунды, так как окончательная цена рассчитывается в процессе прогрузки страницы
+        $(".accordion__goods-count").shouldHave(text("2 С‚РѕРІР°СЂР°"));
+        // РџР°СѓР·Р° РЅР° 4 СЃРµРєСѓРЅРґС‹, С‚Р°Рє РєР°Рє РѕРєРѕРЅС‡Р°С‚РµР»СЊРЅР°СЏ С†РµРЅР° СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ РІ РїСЂРѕС†РµСЃСЃРµ РїСЂРѕРіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
         try {
-            Thread.sleep(4000); // Пауза на 3000 миллисекунд (3 секунды)
+            Thread.sleep(4000); // РџР°СѓР·Р° РЅР° 3000 РјРёР»Р»РёСЃРµРєСѓРЅРґ (3 СЃРµРєСѓРЅРґС‹)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Селекторы с ценами стоимости товара в количестве 2 шт
+        // РЎРµР»РµРєС‚РѕСЂС‹ СЃ С†РµРЅР°РјРё СЃС‚РѕРёРјРѕСЃС‚Рё С‚РѕРІР°СЂР° РІ РєРѕР»РёС‡РµСЃС‚РІРµ 2 С€С‚
         SelenideElement priceElement1 = $(".list-item__price-new.wallet");
         SelenideElement priceElement2 = $(".b-top__total.line span:nth-of-type(2)");
 
-        // Извлекаем текст цен
+        // РР·РІР»РµРєР°РµРј С‚РµРєСЃС‚ С†РµРЅ
         String priceText1 = priceElement1.getText();
         String priceText2 = priceElement2.getText();
-        // Парсим строку в числа
+        // РџР°СЂСЃРёРј СЃС‚СЂРѕРєСѓ РІ С‡РёСЃР»Р°
         double priceNum1 = parsePrice(priceText1);
         double priceNum2 = parsePrice(priceText2);
-        assertEquals(priceNum1, priceNum2);        // Сравниваем стоимость 2 шт в списке и в итого
+        assertEquals(priceNum1, priceNum2);        // РЎСЂР°РІРЅРёРІР°РµРј СЃС‚РѕРёРјРѕСЃС‚СЊ 2 С€С‚ РІ СЃРїРёСЃРєРµ Рё РІ РёС‚РѕРіРѕ
 
         $(".count__minus.minus").click();
-        $(".accordion__goods-count").shouldHave(text("1 товар"));
-        // Пауза на 4 секунды, так как окончательная цена рассчитывается в процессе прогрузки страницы
+        $(".accordion__goods-count").shouldHave(text("1 С‚РѕРІР°СЂ"));
+        // РџР°СѓР·Р° РЅР° 4 СЃРµРєСѓРЅРґС‹, С‚Р°Рє РєР°Рє РѕРєРѕРЅС‡Р°С‚РµР»СЊРЅР°СЏ С†РµРЅР° СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ РІ РїСЂРѕС†РµСЃСЃРµ РїСЂРѕРіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
         try {
-            Thread.sleep(4000); // Пауза на 3000 миллисекунд (3 секунды)
+            Thread.sleep(4000); // РџР°СѓР·Р° РЅР° 3000 РјРёР»Р»РёСЃРµРєСѓРЅРґ (3 СЃРµРєСѓРЅРґС‹)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Селекторы с ценами стоимости товара в количестве 2 шт
+        // РЎРµР»РµРєС‚РѕСЂС‹ СЃ С†РµРЅР°РјРё СЃС‚РѕРёРјРѕСЃС‚Рё С‚РѕРІР°СЂР° РІ РєРѕР»РёС‡РµСЃС‚РІРµ 2 С€С‚
         SelenideElement priceElement3 = $(".list-item__price-new.wallet");
         SelenideElement priceElement4 = $(".b-top__total.line span:nth-of-type(2)");
-        // Извлекаем текст цен после изменения количества на 2 шт
+        // РР·РІР»РµРєР°РµРј С‚РµРєСЃС‚ С†РµРЅ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° РЅР° 2 С€С‚
         String priceText3 = priceElement3.getText();
         String priceText4 = priceElement4.getText();
-        // Сравниваем стоимость 2 шт в списке и в итого в текстовом формате они должны быть равны
+        // РЎСЂР°РІРЅРёРІР°РµРј СЃС‚РѕРёРјРѕСЃС‚СЊ 2 С€С‚ РІ СЃРїРёСЃРєРµ Рё РІ РёС‚РѕРіРѕ РІ С‚РµРєСЃС‚РѕРІРѕРј С„РѕСЂРјР°С‚Рµ РѕРЅРё РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂР°РІРЅС‹
         assertEquals(priceText3, priceText4);
-        // Преобразовываем текст в число для сравнения
+        // РџСЂРµРѕР±СЂР°Р·РѕРІС‹РІР°РµРј С‚РµРєСЃС‚ РІ С‡РёСЃР»Рѕ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
         // double priceNum1 = parsePrice(priceText1);
         double priceNum3 = parsePrice(priceText3);
 
-        // Сравнение числовых значений
+        // РЎСЂР°РІРЅРµРЅРёРµ С‡РёСЃР»РѕРІС‹С… Р·РЅР°С‡РµРЅРёР№
         assertEquals(priceNum1 / 2, priceNum3);
     }
 
     @Test
-    @DisplayName("Карточка товара. Переход в отзывы через оценку")
+    @DisplayName("РљР°СЂС‚РѕС‡РєР° С‚РѕРІР°СЂР°. РџРµСЂРµС…РѕРґ РІ РѕС‚Р·С‹РІС‹ С‡РµСЂРµР· РѕС†РµРЅРєСѓ")
     void productCardSwitchingToReviewsViaRating() {
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
         $("#comments_reviews_link").shouldBe(visible, Duration.ofSeconds(15)).click();
         webdriver().shouldHave(url("https://www.wildberries.ru/catalog/218488991/feedbacks?imtId=298362116"));
-        $(".product-feedbacks__title").shouldHave(text("Все отзывы"));
-        $(".btn-base.btn-base--lg.rating-product__btn").shouldHave(text("Написать отзыв"));
+        $(".product-feedbacks__title").shouldHave(text("Р’СЃРµ РѕС‚Р·С‹РІС‹"));
+        $(".btn-base.btn-base--lg.rating-product__btn").shouldHave(text("РќР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІ"));
     }
 
     @Test
-    @DisplayName("Карточка товара. Переход в отзывы через кнопку Смотреть все отзывы")
+    @DisplayName("РљР°СЂС‚РѕС‡РєР° С‚РѕРІР°СЂР°. РџРµСЂРµС…РѕРґ РІ РѕС‚Р·С‹РІС‹ С‡РµСЂРµР· РєРЅРѕРїРєСѓ РЎРјРѕС‚СЂРµС‚СЊ РІСЃРµ РѕС‚Р·С‹РІС‹")
     void productCardSwitchingToReviewsViaButton() {
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
 
@@ -266,63 +266,63 @@ public class WebTests {
         }
         $("#footerTabs").scrollTo();
         $("a[href='/catalog/218488991/feedbacks?imtId=298362116&size=347810859']").click();
-        $(".product-feedbacks__title").shouldHave(text("Все отзывы"));
-        $(".btn-base.btn-base--lg.rating-product__btn").shouldHave(text("Написать отзыв"));
+        $(".product-feedbacks__title").shouldHave(text("Р’СЃРµ РѕС‚Р·С‹РІС‹"));
+        $(".btn-base.btn-base--lg.rating-product__btn").shouldHave(text("РќР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІ"));
     }
 
     @Test
-    @DisplayName("Карточка товара. Переход в характеристики")
+    @DisplayName("РљР°СЂС‚РѕС‡РєР° С‚РѕРІР°СЂР°. РџРµСЂРµС…РѕРґ РІ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё")
     void productCardSwitchingToSpecifications() {
         open("https://www.wildberries.ru/catalog/218488991/detail.aspx");
         $(".product-page__btn-detail.hide-mobile.j-details-btn-desktop").shouldBe(Condition.appear).click();
-        $(".popup.popup-product-details.shown").shouldHave(text("Характеристики и описание"));
-        $(".popup.popup-product-details.shown").shouldHave(text("Основная информация"));
-        $(".popup.popup-product-details.shown").shouldHave(text("Технические особенности"));
-        $(".popup.popup-product-details.shown").shouldHave(text("Насадки"));
+        $(".popup.popup-product-details.shown").shouldHave(text("РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё Рё РѕРїРёСЃР°РЅРёРµ"));
+        $(".popup.popup-product-details.shown").shouldHave(text("РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ"));
+        $(".popup.popup-product-details.shown").shouldHave(text("РўРµС…РЅРёС‡РµСЃРєРёРµ РѕСЃРѕР±РµРЅРЅРѕСЃС‚Рё"));
+        $(".popup.popup-product-details.shown").shouldHave(text("РќР°СЃР°РґРєРё"));
     }
 
     @Test
-    @DisplayName("Вход. Попытка входа без номера")
+    @DisplayName("Р’С…РѕРґ. РџРѕРїС‹С‚РєР° РІС…РѕРґР° Р±РµР· РЅРѕРјРµСЂР°")
     void incorrectEntry() {
         open("https://www.wildberries.ru");
         $(".navbar-pc__link.j-main-login.j-wba-header-item").shouldBe(Condition.appear).click();
-        $(".popup.popup-auth-base.shown").shouldHave(text("Войти или создать профиль"));
+        $(".popup.popup-auth-base.shown").shouldHave(text("Р’РѕР№С‚Рё РёР»Рё СЃРѕР·РґР°С‚СЊ РїСЂРѕС„РёР»СЊ"));
         $("#requestCode").click();
-        $(".form-block__message.form-block__message--error").shouldHave(text("Некорректный формат номера"));
+        $(".form-block__message.form-block__message--error").shouldHave(text("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ РЅРѕРјРµСЂР°"));
     }
 
     @Test
-    @DisplayName("Поиск. Корпус для ПК")
+    @DisplayName("РџРѕРёСЃРє. РљРѕСЂРїСѓСЃ РґР»СЏ РџРљ")
     void SearchText() {
         open("https://www.wildberries.ru");
-        $("#searchInput").setValue("корпус для пк").pressEnter();
-        $(".searching-results__title").shouldBe(Condition.appear).shouldHave(text("корпус для пк"));
-        $$(".product-card__wrapper").get(0).shouldHave(text("корпус".toLowerCase())).shouldHave(text("корпус".toUpperCase()));
-        $$(".product-card__wrapper").get(1).shouldHave(text("корпус".toLowerCase())).shouldHave(text("корпус".toUpperCase()));
-        $$(".product-card__wrapper").get(2).shouldHave(text("корпус".toLowerCase())).shouldHave(text("корпус".toUpperCase()));
-        $$(".product-card__wrapper").get(3).shouldHave(text("корпус".toLowerCase())).shouldHave(text("корпус".toUpperCase()));
-        $$(".product-card__wrapper").get(4).shouldHave(text("корпус".toLowerCase())).shouldHave(text("корпус".toUpperCase()));
+        $("#searchInput").setValue("РєРѕСЂРїСѓСЃ РґР»СЏ РїРє").pressEnter();
+        $(".searching-results__title").shouldBe(Condition.appear).shouldHave(text("РєРѕСЂРїСѓСЃ РґР»СЏ РїРє"));
+        $$(".product-card__wrapper").get(0).shouldHave(text("РєРѕСЂРїСѓСЃ".toLowerCase())).shouldHave(text("РєРѕСЂРїСѓСЃ".toUpperCase()));
+        $$(".product-card__wrapper").get(1).shouldHave(text("РєРѕСЂРїСѓСЃ".toLowerCase())).shouldHave(text("РєРѕСЂРїСѓСЃ".toUpperCase()));
+        $$(".product-card__wrapper").get(2).shouldHave(text("РєРѕСЂРїСѓСЃ".toLowerCase())).shouldHave(text("РєРѕСЂРїСѓСЃ".toUpperCase()));
+        $$(".product-card__wrapper").get(3).shouldHave(text("РєРѕСЂРїСѓСЃ".toLowerCase())).shouldHave(text("РєРѕСЂРїСѓСЃ".toUpperCase()));
+        $$(".product-card__wrapper").get(4).shouldHave(text("РєРѕСЂРїСѓСЃ".toLowerCase())).shouldHave(text("РєРѕСЂРїСѓСЃ".toUpperCase()));
     }
 
     @Test
-    @DisplayName("Поиск. Поиск по фото")
+    @DisplayName("РџРѕРёСЃРє. РџРѕРёСЃРє РїРѕ С„РѕС‚Рѕ")
     void searchPhoto() {
         open("https://www.wildberries.ru");
         $("#searchByImageFormAbNew").click();
         $("#popUpFileInput").uploadFromClasspath("sampleFile.jpeg");
         $("#searchGoodsButton").click();
-        $$(".product-card__wrapper").get(0).shouldHave(text("сияние".toLowerCase())).shouldHave(text("сияние".toUpperCase()));
+        $$(".product-card__wrapper").get(0).shouldHave(text("СЃРёСЏРЅРёРµ".toLowerCase())).shouldHave(text("СЃРёСЏРЅРёРµ".toUpperCase()));
 
     }
 
     @Test
-    @DisplayName("Поиск. Неккоректный поиск")
+    @DisplayName("РџРѕРёСЃРє. РќРµРєРєРѕСЂРµРєС‚РЅС‹Р№ РїРѕРёСЃРє")
     void searchUncorrected() {
         open("https://www.wildberries.ru");
         $("#searchInput").setValue("**").pressEnter();
-        $(".not-found-search__title").shouldHave(text("Ничего не нашлось по запросу"));
-        $(".not-found-search__text").shouldHave(text("Попробуйте поискать по-другому или сократить запрос"));
-        $(".catalog-page__section-header.section-header").shouldHave(text("Возможно, вам понравится:"));
+        $(".not-found-search__title").shouldHave(text("РќРёС‡РµРіРѕ РЅРµ РЅР°С€Р»РѕСЃСЊ РїРѕ Р·Р°РїСЂРѕСЃСѓ"));
+        $(".not-found-search__text").shouldHave(text("РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРёСЃРєР°С‚СЊ РїРѕ-РґСЂСѓРіРѕРјСѓ РёР»Рё СЃРѕРєСЂР°С‚РёС‚СЊ Р·Р°РїСЂРѕСЃ"));
+        $(".catalog-page__section-header.section-header").shouldHave(text("Р’РѕР·РјРѕР¶РЅРѕ, РІР°Рј РїРѕРЅСЂР°РІРёС‚СЃСЏ:"));
 
     }
 }

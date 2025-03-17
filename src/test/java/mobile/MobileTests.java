@@ -13,88 +13,88 @@ import static org.openqa.selenium.By.xpath;
 
 public class MobileTests extends LocalTestBase {
 
-    @DisplayName("Онбординг. Проверяем страницы")
+    @DisplayName("РћРЅР±РѕСЂРґРёРЅРі. РџСЂРѕРІРµСЂСЏРµРј СЃС‚СЂР°РЅРёС†С‹")
     @Test
     void onboardingPage(){
-        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Свободная энциклопедия"));
+        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("РЎРІРѕР±РѕРґРЅР°СЏ СЌРЅС†РёРєР»РѕРїРµРґРёСЏ"));
         $(id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click();
-        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Новые способы исследований"));
+        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("РќРѕРІС‹Рµ СЃРїРѕСЃРѕР±С‹ РёСЃСЃР»РµРґРѕРІР°РЅРёР№"));
         $(id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click();
-        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Списки для чтения с синхронизацией"));
+        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("РЎРїРёСЃРєРё РґР»СЏ С‡С‚РµРЅРёСЏ СЃ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРµР№"));
         $(id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click();
-        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Данные и конфиденциальность"));
+        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Р”Р°РЅРЅС‹Рµ Рё РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚СЊ"));
     }
 
-    @DisplayName("Онбординг. Пропуск") //проверяем главную страницу. Википедия, поиск, кнопки лента Сохраненные, Найти, Правки, Ещё
+    @DisplayName("РћРЅР±РѕСЂРґРёРЅРі. РџСЂРѕРїСѓСЃРє") //РїСЂРѕРІРµСЂСЏРµРј РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ. Р’РёРєРёРїРµРґРёСЏ, РїРѕРёСЃРє, РєРЅРѕРїРєРё Р»РµРЅС‚Р° РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ, РќР°Р№С‚Рё, РџСЂР°РІРєРё, Р•С‰С‘
     @Test
     void onboardingSkip(){
-        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Свободная энциклопедия"));
+        $(id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("РЎРІРѕР±РѕРґРЅР°СЏ СЌРЅС†РёРєР»РѕРїРµРґРёСЏ"));
         $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
-        $(id("org.wikipedia.alpha:id/main_toolbar_wordmark")).shouldBe(visible); // заголово Википедия
-        $(id("org.wikipedia.alpha:id/search_container")).shouldBe(visible); // поиск
-        $(id("org.wikipedia.alpha:id/nav_tab_explore")).shouldBe(visible); // кнопка Лента
-        $(id("org.wikipedia.alpha:id/nav_tab_reading_lists")).shouldBe(visible); // кнопка Сохраненные
-        $(id("org.wikipedia.alpha:id/nav_tab_search")).shouldBe(visible); // кнопка Найти
-        $(id("org.wikipedia.alpha:id/nav_tab_edits")).shouldBe(visible); // Правки
-        $(id("org.wikipedia.alpha:id/nav_tab_more")).shouldBe(visible); // Ещё
+        $(id("org.wikipedia.alpha:id/main_toolbar_wordmark")).shouldBe(visible); // Р·Р°РіРѕР»РѕРІРѕ Р’РёРєРёРїРµРґРёСЏ
+        $(id("org.wikipedia.alpha:id/search_container")).shouldBe(visible); // РїРѕРёСЃРє
+        $(id("org.wikipedia.alpha:id/nav_tab_explore")).shouldBe(visible); // РєРЅРѕРїРєР° Р›РµРЅС‚Р°
+        $(id("org.wikipedia.alpha:id/nav_tab_reading_lists")).shouldBe(visible); // РєРЅРѕРїРєР° РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ
+        $(id("org.wikipedia.alpha:id/nav_tab_search")).shouldBe(visible); // РєРЅРѕРїРєР° РќР°Р№С‚Рё
+        $(id("org.wikipedia.alpha:id/nav_tab_edits")).shouldBe(visible); // РџСЂР°РІРєРё
+        $(id("org.wikipedia.alpha:id/nav_tab_more")).shouldBe(visible); // Р•С‰С‘
     }
 
-    @DisplayName("Поиск. Стандартно") //
+    @DisplayName("РџРѕРёСЃРє. РЎС‚Р°РЅРґР°СЂС‚РЅРѕ") //
     @Test
     void searchTest(){
         new MobilePages().skipOnboarding();
         new MobilePages().searchJava();
     }
 
-    @DisplayName("Навтабы. Переход в сохраненные пустые") //
+    @DisplayName("РќР°РІС‚Р°Р±С‹. РџРµСЂРµС…РѕРґ РІ СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ РїСѓСЃС‚С‹Рµ") //
     @Test
     void searchTest1(){
         new MobilePages().skipOnboarding();
         new MobilePages().transitionSaved();
     }
 
-    @DisplayName("Навтабы. Переход в найти. Без истории") //
+    @DisplayName("РќР°РІС‚Р°Р±С‹. РџРµСЂРµС…РѕРґ РІ РЅР°Р№С‚Рё. Р‘РµР· РёСЃС‚РѕСЂРёРё") //
     @Test
     void searchTest2(){
         new MobilePages().skipOnboarding();
         new MobilePages().transitionSearch();
     }
 
-    @DisplayName("Навтабы. Переход в правки. Без истории") //
+    @DisplayName("РќР°РІС‚Р°Р±С‹. РџРµСЂРµС…РѕРґ РІ РїСЂР°РІРєРё. Р‘РµР· РёСЃС‚РѕСЂРёРё") //
     @Test
     void searchTest3(){
         new MobilePages().skipOnboarding();
         new MobilePages().transitionEdits();
     }
 
-    @DisplayName("Навтабы. Переход в ещё. Без истории") //
+    @DisplayName("РќР°РІС‚Р°Р±С‹. РџРµСЂРµС…РѕРґ РІ РµС‰С‘. Р‘РµР· РёСЃС‚РѕСЂРёРё") //
     @Test
     void searchTest4(){
         new MobilePages().skipOnboarding();
         new MobilePages().transitionMore();
     }
 
-    @DisplayName("Найденная инфа. Добавление статьи в сохраненные по умолчанию") //
+    @DisplayName("РќР°Р№РґРµРЅРЅР°СЏ РёРЅС„Р°. Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°С‚СЊРё РІ СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ") //
     @Test
     void searchTest5(){
         new MobilePages().skipOnboarding();
         new MobilePages().searchJava();
         new MobilePages().transitionToFoundArticle();
-        // добавление статьи с сохраненные
+        // РґРѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°С‚СЊРё СЃ СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ
         new MobilePages().clickSaveButton();
-        // возвращенние на главную страницу
+        // РІРѕР·РІСЂР°С‰РµРЅРЅРёРµ РЅР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
         new MobilePages().returningFromSearchToMainPage();
-        // переходим в Сохраненные
+        // РїРµСЂРµС…РѕРґРёРј РІ РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ
         new MobilePages().transitionSaved();
-        // переходим в первый сохраненный список
+        // РїРµСЂРµС…РѕРґРёРј РІ РїРµСЂРІС‹Р№ СЃРѕС…СЂР°РЅРµРЅРЅС‹Р№ СЃРїРёСЃРѕРє
         new MobilePages().goToFirstSavedList();
-        // скрываем подсказку
+        // СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ
         new MobilePages().hidingHint();
-        // проверяем название и описание сохраненной статьи
+        // РїСЂРѕРІРµСЂСЏРµРј РЅР°Р·РІР°РЅРёРµ Рё РѕРїРёСЃР°РЅРёРµ СЃРѕС…СЂР°РЅРµРЅРЅРѕР№ СЃС‚Р°С‚СЊРё
         new MobilePages().shouldHaveNameAndDescriptionArticleSaveUserList();
     }
 
-    @DisplayName("Сохраненные. Создание нового списка")
+    @DisplayName("РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ. РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР°")
     @Test
     void searchTest6(){
         new MobilePages().skipOnboarding();
@@ -107,10 +107,10 @@ public class MobileTests extends LocalTestBase {
         new MobilePages().listNewShouldHaveNameAndDescription();
     }
 
-    @DisplayName("Сохраненные. Удаление списка") //
+    @DisplayName("РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ. РЈРґР°Р»РµРЅРёРµ СЃРїРёСЃРєР°") //
     @Test
     void searchTest7(){
-        // создание нового списка
+        // СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР°
         new MobilePages().skipOnboarding();
         new MobilePages().transitionSaved();
         new MobilePages().savedMenuButton();
@@ -118,25 +118,25 @@ public class MobileTests extends LocalTestBase {
         new MobilePages().sendKeysNameNewList();
         new MobilePages().sendKeysDescriptionNewList();
         new MobilePages().clickButtonOk();
-        // проверяем что список создался. проверяем имя и описание созданного списка
+        // РїСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ СЃРїРёСЃРѕРє СЃРѕР·РґР°Р»СЃСЏ. РїСЂРѕРІРµСЂСЏРµРј РёРјСЏ Рё РѕРїРёСЃР°РЅРёРµ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°
         new MobilePages().listNewShouldHaveNameAndDescription();
-        // открываем список
+        // РѕС‚РєСЂС‹РІР°РµРј СЃРїРёСЃРѕРє
         new MobilePages().goToFirstSavedList();
-        // скрываем подсказку
+        // СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ
         new MobilePages().hidingHint();
-        // заходим в меню списка
+        // Р·Р°С…РѕРґРёРј РІ РјРµРЅСЋ СЃРїРёСЃРєР°
         new MobilePages().listMenuButton();
-        // удаляем список
+        // СѓРґР°Р»СЏРµРј СЃРїРёСЃРѕРє
         new MobilePages().listMenuButtonDeleteList();
         new MobilePages().clickButtonOk();
-        // проверяем что списки отсутствуют
+        // РїСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ СЃРїРёСЃРєРё РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚
         new MobilePages().shouldNotSavedLists();
     }
 
-    @DisplayName("Сохраненные. Изменение названия и описания списка")
+    @DisplayName("РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ. РР·РјРµРЅРµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ Рё РѕРїРёСЃР°РЅРёСЏ СЃРїРёСЃРєР°")
     @Test
     void searchTest8(){
-        // создание нового списка
+        // СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР°
         new MobilePages().skipOnboarding();
         new MobilePages().transitionSaved();
         new MobilePages().savedMenuButton();
@@ -144,28 +144,28 @@ public class MobileTests extends LocalTestBase {
         new MobilePages().sendKeysNameNewList();
         new MobilePages().sendKeysDescriptionNewList();
         new MobilePages().clickButtonOk();
-        // проверяем что список создался. проверяем имя и описание созданного списка
+        // РїСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ СЃРїРёСЃРѕРє СЃРѕР·РґР°Р»СЃСЏ. РїСЂРѕРІРµСЂСЏРµРј РёРјСЏ Рё РѕРїРёСЃР°РЅРёРµ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°
         new MobilePages().listNewShouldHaveNameAndDescription();
-        // открываем список
+        // РѕС‚РєСЂС‹РІР°РµРј СЃРїРёСЃРѕРє
         new MobilePages().goToFirstSavedList();
-        // скрываем подсказку
+        // СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ
         new MobilePages().hidingHint();
-        // заходим в меню списка
+        // Р·Р°С…РѕРґРёРј РІ РјРµРЅСЋ СЃРїРёСЃРєР°
         new MobilePages().listMenuButton();
-        // выбираем пункт изменить название списка
+        // РІС‹Р±РёСЂР°РµРј РїСѓРЅРєС‚ РёР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ СЃРїРёСЃРєР°
         new MobilePages().listMenuButtonChangeNameList();
-        // меняем название и описание списка
+        // РјРµРЅСЏРµРј РЅР°Р·РІР°РЅРёРµ Рё РѕРїРёСЃР°РЅРёРµ СЃРїРёСЃРєР°
         new MobilePages().sendKeysNameOldList();
         new MobilePages().sendKeysDescriptionOldList();
         new MobilePages().clickButtonOk();
-        // проверяем имя и описание списка после изменений
+        // РїСЂРѕРІРµСЂСЏРµРј РёРјСЏ Рё РѕРїРёСЃР°РЅРёРµ СЃРїРёСЃРєР° РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёР№
         new MobilePages().listOldShouldHaveNameAndDescription();
     }
 
-    @DisplayName("Сохраненные. Добавление статьи в список")
+    @DisplayName("РЎРѕС…СЂР°РЅРµРЅРЅС‹Рµ. Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°С‚СЊРё РІ СЃРїРёСЃРѕРє")
     @Test
     void addingArticleToUserList(){
-        // создание нового списка
+        // СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР°
         new MobilePages().skipOnboarding();
         new MobilePages().transitionSaved();
         new MobilePages().savedMenuButton();
@@ -173,31 +173,31 @@ public class MobileTests extends LocalTestBase {
         new MobilePages().sendKeysNameNewList();
         new MobilePages().sendKeysDescriptionNewList();
         new MobilePages().clickButtonOk();
-        // проверяем что список создался. проверяем имя и описание созданного списка
+        // РїСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ СЃРїРёСЃРѕРє СЃРѕР·РґР°Р»СЃСЏ. РїСЂРѕРІРµСЂСЏРµРј РёРјСЏ Рё РѕРїРёСЃР°РЅРёРµ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°
         new MobilePages().listNewShouldHaveNameAndDescription();
-        // переходим в ленту
+        // РїРµСЂРµС…РѕРґРёРј РІ Р»РµРЅС‚Сѓ
         new MobilePages().transitionFeed();
-        // ищем статью java
+        // РёС‰РµРј СЃС‚Р°С‚СЊСЋ java
         new MobilePages().searchJava();
-        // переход в первую найденную статью
+        // РїРµСЂРµС…РѕРґ РІ РїРµСЂРІСѓСЋ РЅР°Р№РґРµРЅРЅСѓСЋ СЃС‚Р°С‚СЊСЋ
         new MobilePages().transitionFirstFoundArticle();
-        // нажимаем кнопку сохранить
+        // РЅР°Р¶РёРјР°РµРј РєРЅРѕРїРєСѓ СЃРѕС…СЂР°РЅРёС‚СЊ
         new MobilePages().clickSaveButton();
-        // подтверждаем добавление статьи в список
+        // РїРѕРґС‚РІРµСЂР¶РґР°РµРј РґРѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°С‚СЊРё РІ СЃРїРёСЃРѕРє
         new MobilePages().confirmingAdditionToList();
-        // выбираем список в который добавим статью
+        // РІС‹Р±РёСЂР°РµРј СЃРїРёСЃРѕРє РІ РєРѕС‚РѕСЂС‹Р№ РґРѕР±Р°РІРёРј СЃС‚Р°С‚СЊСЋ
         new MobilePages().selectingListForArticle();
-        // возвращаемся на главную страницу
+        // РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ РЅР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
         new MobilePages().returningFromSearchToMainPage();
-        // отказываемся от синхронизации списков
+        // РѕС‚РєР°Р·С‹РІР°РµРјСЃСЏ РѕС‚ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё СЃРїРёСЃРєРѕРІ
         new MobilePages().refusingSynchronizeLists();
-        // заходим в сохраненные
+        // Р·Р°С…РѕРґРёРј РІ СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ
         new MobilePages().transitionSaved();
-        // переход в пользовательский список
+        // РїРµСЂРµС…РѕРґ РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ СЃРїРёСЃРѕРє
         new MobilePages().transitionUserList();
-        // скрываем подсказку
+        // СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ
         new MobilePages().hidingHint();
-        // проверяем название сохраненной статьи в пользователском списке
+        // РїСЂРѕРІРµСЂСЏРµРј РЅР°Р·РІР°РЅРёРµ СЃРѕС…СЂР°РЅРµРЅРЅРѕР№ СЃС‚Р°С‚СЊРё РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЃРєРѕРј СЃРїРёСЃРєРµ
         new MobilePages().shouldHaveNameAndDescriptionArticleSaveUserList();
     }
 }
