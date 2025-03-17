@@ -33,7 +33,7 @@ public class BackendTests {
                 .then().log().ifStatusCodeIsEqualTo(400)
                 .extract().as(ResponseModel.class);
 
-        assertThat(modelResponseLombok.getId()).isEqualTo("4");
+        assertThat(modelResponseLombok.getId()).isEqualTo(4);
         assertThat(modelResponseLombok.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
 
     }
@@ -102,6 +102,7 @@ public class BackendTests {
     void reqresListUsers() {
 
         ResponseModel modelResponseLombok = given()
+                .filter(new AllureRestAssured())
                 .log().all()
                 .header("Content-type", "application/json")
                 .and()
@@ -134,6 +135,7 @@ public class BackendTests {
     void reqresUser2() {
 
         ResponseModelSingleUser modelResponseLombok = given()
+                .filter(new AllureRestAssured())
                 .log().all()
                 .header("Content-type", "application/json")
                 .and()
@@ -159,6 +161,7 @@ public class BackendTests {
     void reqresUser23() {
 
         ResponseModelSingleUser modelResponseLombok = given()
+                .filter(new AllureRestAssured())
                 .log().all()
                 .header("Content-type", "application/json")
                 .and()
@@ -179,6 +182,7 @@ public class BackendTests {
         bodyModelLombok.setJob("zion resident");
 
         ResponseModel modelResponseLombok = given()
+                .filter(new AllureRestAssured())
                 .log().all()
                 .header("Content-type", "application/json")
                 .and()
