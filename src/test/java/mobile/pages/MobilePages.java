@@ -9,15 +9,15 @@ import static org.openqa.selenium.By.xpath;
 
 public class MobilePages {
 
-    private final String listName1 = "Список 1";
-    private final String listName2 = "Список 2";
+    private final String listName1 = "РЎРїРёСЃРѕРє 1";
+    private final String listName2 = "РЎРїРёСЃРѕРє 2";
 
-    private final String listDescription1 = "Описание 1";
-    private final String listDescription2 = "Описание 2";
+    private final String listDescription1 = "РћРїРёСЃР°РЅРёРµ 1";
+    private final String listDescription2 = "РћРїРёСЃР°РЅРёРµ 2";
 
     private final String nameArticleSaveUserList = "Java";
 
-    private final String descriptionArticleSaveUserList = "язык программирования";
+    private final String descriptionArticleSaveUserList = "СЏР·С‹Рє РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ";
 
 
     public void skipOnboarding () {
@@ -32,20 +32,20 @@ public class MobilePages {
 
     public void transitionSaved () {
         $(id("org.wikipedia.alpha:id/nav_tab_reading_lists")).click();
-        $(("android.widget.TextView")).shouldHave(text("Сохранённые"));
+        $(("android.widget.TextView")).shouldHave(text("РЎРѕС…СЂР°РЅС‘РЅРЅС‹Рµ"));
     }
 
     public void transitionSearch () {
         $(id("org.wikipedia.alpha:id/nav_tab_search")).click();
-        $(("android.widget.TextView")).shouldHave(text("Найти"));
+        $(("android.widget.TextView")).shouldHave(text("РќР°Р№С‚Рё"));
         $(id("org.wikipedia.alpha:id/search_card")).shouldBe(visible);
-        $(id("org.wikipedia.alpha:id/history_title")).shouldHave(text("История"));
+        $(id("org.wikipedia.alpha:id/history_title")).shouldHave(text("РСЃС‚РѕСЂРёСЏ"));
     }
 
     public void transitionEdits () {
         $(id("org.wikipedia.alpha:id/nav_tab_edits")).click();
-        $(("android.widget.TextView")).shouldHave(text("Правки"));
-        $(id("org.wikipedia.alpha:id/messageTitleView")).shouldHave(text("Знаете ли вы, что каждый может редактировать Википедию?"));
+        $(("android.widget.TextView")).shouldHave(text("РџСЂР°РІРєРё"));
+        $(id("org.wikipedia.alpha:id/messageTitleView")).shouldHave(text("Р—РЅР°РµС‚Рµ Р»Рё РІС‹, С‡С‚Рѕ РєР°Р¶РґС‹Р№ РјРѕР¶РµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р’РёРєРёРїРµРґРёСЋ?"));
     }
 
     public void transitionMore () {
@@ -60,11 +60,11 @@ public class MobilePages {
         $(id("org.wikipedia.alpha:id/page_list_item_title")).click();
     }
 
-    public void transitionFeed () { // переход в ленту
+    public void transitionFeed () { // РїРµСЂРµС…РѕРґ РІ Р»РµРЅС‚Сѓ
         $(id("org.wikipedia.alpha:id/nav_tab_explore")).click();
     }
 
-    public void clickSaveButton () { // нажимаем кнопку Сохранить
+    public void clickSaveButton () { // РЅР°Р¶РёРјР°РµРј РєРЅРѕРїРєСѓ РЎРѕС…СЂР°РЅРёС‚СЊ
         $(id("org.wikipedia.alpha:id/page_save")).click();
     }
 
@@ -97,28 +97,28 @@ public class MobilePages {
         $(id("android:id/button1")).click();
     }
 
-    public void listMenuButton () { // кнопка меню в открытом списке
+    public void listMenuButton () { // РєРЅРѕРїРєР° РјРµРЅСЋ РІ РѕС‚РєСЂС‹С‚РѕРј СЃРїРёСЃРєРµ
         $(id("org.wikipedia.alpha:id/item_overflow_menu")).click();
     }
 
-    public void listMenuButtonDeleteList () { // в меню списка выбираем пункт удалить список
+    public void listMenuButtonDeleteList () { // РІ РјРµРЅСЋ СЃРїРёСЃРєР° РІС‹Р±РёСЂР°РµРј РїСѓРЅРєС‚ СѓРґР°Р»РёС‚СЊ СЃРїРёСЃРѕРє
         $(xpath("(//android.widget.LinearLayout[@resource-id=\"org.wikipedia.alpha:id/content\"])[5]")).click();
     }
 
-    public void listMenuButtonChangeNameList () { // в меню списка выбираем пункт изменить название списка
-        $(xpath("(//android.widget.LinearLayout[@resource-id=\"org.wikipedia.alpha:id/content\"])[1]")).click(); // выбираем изменить название
+    public void listMenuButtonChangeNameList () { // РІ РјРµРЅСЋ СЃРїРёСЃРєР° РІС‹Р±РёСЂР°РµРј РїСѓРЅРєС‚ РёР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ СЃРїРёСЃРєР°
+        $(xpath("(//android.widget.LinearLayout[@resource-id=\"org.wikipedia.alpha:id/content\"])[1]")).click(); // РІС‹Р±РёСЂР°РµРј РёР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ
     }
 
-    public void listNewShouldHaveNameAndDescription () { // проверяем имя и описание созданного списка
+    public void listNewShouldHaveNameAndDescription () { // РїСЂРѕРІРµСЂСЏРµРј РёРјСЏ Рё РѕРїРёСЃР°РЅРёРµ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°
         $(id("org.wikipedia.alpha:id/item_title")).shouldHave(text(listName1));
         $(id("org.wikipedia.alpha:id/item_description")).shouldHave(text(listDescription1));
     }
 
     public void hidingHint () {
-        $(id("org.wikipedia.alpha:id/buttonView")).click(); // скрываем подсказку
+        $(id("org.wikipedia.alpha:id/buttonView")).click(); // СЃРєСЂС‹РІР°РµРј РїРѕРґСЃРєР°Р·РєСѓ
     }
 
-    public void listOldShouldHaveNameAndDescription () { // проверяем имя и описание списка после изменений
+    public void listOldShouldHaveNameAndDescription () { // РїСЂРѕРІРµСЂСЏРµРј РёРјСЏ Рё РѕРїРёСЃР°РЅРёРµ СЃРїРёСЃРєР° РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёР№
         $(id("org.wikipedia.alpha:id/item_title")).shouldHave(text(listName2));
         $(id("org.wikipedia.alpha:id/item_description")).shouldHave(text(listDescription2));
     }
@@ -132,11 +132,11 @@ public class MobilePages {
     }
 
     public void transitionFirstFoundArticle () {
-        $(xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"org.wikipedia.alpha:id/search_results_list\"]/android.view.ViewGroup[1]")).click(); // перейти в статью
+        $(xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"org.wikipedia.alpha:id/search_results_list\"]/android.view.ViewGroup[1]")).click(); // РїРµСЂРµР№С‚Рё РІ СЃС‚Р°С‚СЊСЋ
     }
 
-    public void transitionUserList () { // переход в пользовательский список
-        $(xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"org.wikipedia.alpha:id/recycler_view\"]/android.view.ViewGroup[2]")).click(); // проваливаемся в список
+    public void transitionUserList () { // РїРµСЂРµС…РѕРґ РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ СЃРїРёСЃРѕРє
+        $(xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"org.wikipedia.alpha:id/recycler_view\"]/android.view.ViewGroup[2]")).click(); // РїСЂРѕРІР°Р»РёРІР°РµРјСЃСЏ РІ СЃРїРёСЃРѕРє
     }
 
     public void shouldHaveNameAndDescriptionArticleSaveUserList () {
@@ -144,21 +144,21 @@ public class MobilePages {
         $(id("org.wikipedia.alpha:id/page_list_item_description")).shouldHave(text(descriptionArticleSaveUserList));
     }
 
-    public void confirmingAdditionToList () { // подтверждаем добавление статьи в список
+    public void confirmingAdditionToList () { // РїРѕРґС‚РІРµСЂР¶РґР°РµРј РґРѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°С‚СЊРё РІ СЃРїРёСЃРѕРє
 
         $(id("org.wikipedia.alpha:id/snackbar_action")).click();
     }
 
-    public void selectingListForArticle () { // выбираем список в который добавим статью
+    public void selectingListForArticle () { // РІС‹Р±РёСЂР°РµРј СЃРїРёСЃРѕРє РІ РєРѕС‚РѕСЂС‹Р№ РґРѕР±Р°РІРёРј СЃС‚Р°С‚СЊСЋ
 
         $(id("org.wikipedia.alpha:id/list_of_lists")).click();
     }
 
-    public void refusingSynchronizeLists () { // отказываемся от синхронизации списков
+    public void refusingSynchronizeLists () { // РѕС‚РєР°Р·С‹РІР°РµРјСЃСЏ РѕС‚ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё СЃРїРёСЃРєРѕРІ
         $(id("android:id/button2")).click();
     }
 
-    public void shouldNotSavedLists () { // проверяем отсутствие сохраненных списков
+    public void shouldNotSavedLists () { // РїСЂРѕРІРµСЂСЏРµРј РѕС‚СЃСѓС‚СЃС‚РІРёРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… СЃРїРёСЃРєРѕРІ
         $(id("org.wikipedia.alpha:id/item_title")).shouldNot(exist);
     }
 }
