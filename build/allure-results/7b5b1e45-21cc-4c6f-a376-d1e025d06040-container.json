@@ -1,0 +1,1 @@
+{"uuid":"7b5b1e45-21cc-4c6f-a376-d1e025d06040","name":"Хедер. Изменение валюты","children":["1dae7cbc-199a-4f22-b69e-588063c549a8"],"befores":[{"name":"main","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1741976084965,"stop":1741976084988}],"afters":[],"start":1741976084824,"stop":1741976117846}

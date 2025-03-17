@@ -1,0 +1,1 @@
+{"uuid":"8cb1ef01-bec4-4556-8c06-baffc5b2720c","name":"MobileTests","children":["69d9051d-0fd2-4c35-b9ba-1ae7df12bde2"],"befores":[{"name":"beforeAll","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1742193549557,"stop":1742193549581}],"afters":[],"start":1742193549513,"stop":1742193551492}
