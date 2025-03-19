@@ -178,7 +178,7 @@ public class BackendTests {
     }
 
 
-    @DisplayName("Обновляем пользователя №2 ")
+    @DisplayName("Обновляем пользователя №2")
     @Test
     void reqresUpdatedUser2() {
         RequestModelUpdateUser bodyModelLombok = new RequestModelUpdateUser();
