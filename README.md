@@ -26,6 +26,7 @@
 <a href="https://appium.io/"><img src="images/logo/Appium.svg" width="50" height="50"  alt="Appium"/></a>
 <a href="https://appium.github.io/appium-inspector/2024.12/"><img src="images/logo/appiuninsp1.png" width="50" height="50"  alt="Appium Inspector"/></a>
 <a href="https://www.vysor.io/"><img src="images/logo/vysor.png" width="50" height="50"  alt="Vysor"/></a>
+<a href="https://www.vysor.io/"><img src="images/logo/vysor.png" width="50" height="50"  alt="Vysor"/></a>
 <a href="https://ubuntu.com/"><img src="Ubuntu1.png" width="50" height="50"  alt="Ubuntu"/></a>
 <a href="https://www.docker.com/"><img src="docker-mark-blue.png" width="50" height="50"  alt="Docker"/></a>    
 </p>
