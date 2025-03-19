@@ -9,13 +9,22 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.maven.apache.org/maven2' } // Test IT
+    mavenLocal() // Test IT
 }
 
-def slf4jVersion = "1.7.32"
 
 dependencies {
+//   agent("org.aspectj:aspectjweaver:1.9.22")// Test IT
+    implementation('org.aspectj:aspectjrt:1.9.22') // Test IT
+    implementation("org.junit.platform:junit-platform-launcher:1.9.0")// Test IT
+    implementation("org.slf4j:slf4j-api:1.7.36")// Test IT
+    implementation("org.slf4j:slf4j-simple:1.7.36")// Test IT
+  //  implementation(project(":testit-java-commons")) // Test IT
+
     testImplementation (
-            'org.junit.jupiter:junit-jupiter-api:5.8.1',
+            "org.junit.jupiter:junit-jupiter-engine:5.9.3", // Test IT
+            "org.junit.jupiter:junit-jupiter-params:5.9.3", // Test IT
             "com.codeborne:selenide:6.19.1",
             "org.junit.jupiter:junit-jupiter:5.9.3",
             "org.assertj:assertj-core:3.26.3",
@@ -26,7 +35,7 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:2.20.1",
             "io.appium:java-client:8.3.0",
             "commons-io:commons-io:2.11.0",
-    "org.slf4j:slf4j-simple:$slf4jVersion")
+            "ru.testit:testit-adapter-junit5:2.6.0-TMS-CLOUD")
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
@@ -42,6 +51,23 @@ task backend_test(type: Test) {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+// Test IT
+tasks.jar {
+    manifest {
+        attributes(
+                'Automatic-Module-Name': 'your.module.name'
+        )
+    }
+    from('src/main/services') {
+        into('META-INF/services')
+    }
+}
+
+// Test IT
+tasks.compileTestJava {
+    options.compilerArgs.add("-parameters")
 }
 
 

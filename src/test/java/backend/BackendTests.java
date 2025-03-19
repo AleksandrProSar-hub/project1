@@ -7,6 +7,9 @@ import backend.Model.ResponseModelSingleUser;
 import io.qameta.allure.restassured.AllureRestAssured;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Base64;
+
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
@@ -59,6 +62,7 @@ public class BackendTests {
 
     @DisplayName("Успешный вход")
     @Test
+
     void reqresLoginSuccessful() {
         RequestModelRegister bodyModelLombok = new RequestModelRegister();
         bodyModelLombok.setEmail("eve.holt@reqres.in");
@@ -198,4 +202,5 @@ public class BackendTests {
         assertThat(modelResponseLombok.getJob()).isEqualTo("zion resident");
         assertThat(modelResponseLombok.getUpdatedAt()).isNotNull();
     }
+
 }
