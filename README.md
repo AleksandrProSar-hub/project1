@@ -21,9 +21,13 @@
 <a href="https://selenide.org/"><img src="images/logo/Selenide.svg" width="50" height="50"  alt="Selenide"/></a>
 <a href="https://aerokube.com/selenoid/"><img src="images/logo/Selenoid.svg" width="50" height="50"  alt="Selenoid"/></a>
 <a href="https://github.com/allure-framework/allure2"><img src="images/logo/Allure.svg" width="50" height="50"  alt="Allure"/></a>
-<a href="https://qameta.io/"><img src="images/logo/Allure_TO.svg" width="50" height="50"  alt="Allure TestOps"/></a>
-<a href="https://www.atlassian.com/ru/software/jira"><img src="images/logo/jira-logo.svg" width="50" height="50"  alt="Atlassian Jira"/></a>
 <a href="https://www.jenkins.io/"><img src="images/logo/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>
+<a href="https://developer.android.com/"><img src="images/logo/Android Studio.svg" width="50" height="50"  alt="Android Studio"/></a>
+<a href="https://appium.io/"><img src="images/logo/Appium.svg" width="50" height="50"  alt="Appium"/></a>
+<a href="https://appium.github.io/appium-inspector/2024.12/"><img src="images/logo/appiuninsp1.png" width="50" height="50"  alt="Appium Inspector"/></a>
+<a href="https://www.vysor.io/"><img src="images/logo/vysor.png" width="50" height="50"  alt="Vysor"/></a>
+<a href="https://ubuntu.com/"><img src="ubuntu-svgrepo-com.svg" width="50" height="50"  alt="Ubuntu"/></a>
+<a href="https://www.docker.com/"><img src="docker-svgrepo-com.svg" width="50" height="50"  alt="Docker"/></a>    
 </p>
 
 ## :maple_leaf: Список проверок, реализованных в автотестах
