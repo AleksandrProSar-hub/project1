@@ -1,10 +1,5 @@
-## Учебный проект по автоматизации тестирования (Web UI)
+## Проект по автоматизации тестирования (Web UI, Backend, Mobile UI)
 <a name="Ссылка"></a>
-### Веб сайт <a target="_blank" href="https://rabota.sber.ru/">Работа в Сбере</a>
-
-<p align="center">
-<img title="Работа в Сбере" src="images/screens/sberRabota.png">
-</p>
 
 ## :maple_leaf: Содержание:
 
