@@ -75,7 +75,7 @@ public class WebTests {
         Selenide.closeWebDriver();
     }
 
-    @Tag("Web")
+    @Tag("Web1")
     @Test
     @DisplayName("Header. Изменение валюты на KZT")
     void headerChangingCurrency() {
