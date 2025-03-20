@@ -20,7 +20,9 @@ dependencies {
     implementation("org.junit.platform:junit-platform-launcher:1.9.0")// Test IT
     implementation("org.slf4j:slf4j-api:1.7.36")// Test IT
     implementation("org.slf4j:slf4j-simple:1.7.36")// Test IT
+    implementation("com.github.javafaker:javafaker:1.0.2")
   //  implementation(project(":testit-java-commons")) // Test IT
+
 
     testImplementation (
             "org.junit.jupiter:junit-jupiter-engine:5.9.3", // Test IT
@@ -35,6 +37,7 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:2.20.1",
             "io.appium:java-client:8.3.0",
             "commons-io:commons-io:2.11.0",
+            "com.codeborne:xls-test:1.4.3",
             "ru.testit:testit-adapter-junit5:2.6.0-TMS-CLOUD")
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
