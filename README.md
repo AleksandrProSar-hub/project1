@@ -79,37 +79,9 @@
 <img title="Allure Tests" src="images/screens/allure2.jpg">
 </p>
 
-
-## <img src="images/logo/Allure_TO.svg" width="25" height="25"  alt="Allure"/></a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/launch/18382">Allure TestOps</a>
-### Общий список всех кейсов: ручных и авто
-<p align="center">
-<img title="Allure Graphics" src="images/screens/aluureTO-TK.png">
-</p>
-
-### Dashboard с общими результатами тестирования
-<p align="center">
-<img title="Allure Graphics" src="images/screens/allureTO_dashboard.png">
-</p>
-
-### Пример отчёта выполнения одного из автотестов
-<p align="center">
-<img title="Allure Graphics" src="images/screens/allureTO-report.png">
-</p>
-
-## <img src="images/logo/jira-logo.svg" width="25" height="25"  alt="Allure"/></a> Интеграция с <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-502">Atlassian Jira</a>
-<p align="center">
-<img title="Jira" src="images/screens/Jira1.png">
-</p>
-
-## <img src="images/logo/Telegram.svg" width="25" height="25"  alt="Allure"/></a> Уведомление в Telegram о результатах прогона тестов
-
-<p align="center">
-<img title="Allure Overview Dashboard" src="images/screens/telegramNotif.png" >
-</p>
-
 ## <img src="images/logo/Selenoid.svg" width="25" height="25"  alt="Selenoid"/></a> Видео прохождения тестов
 <p align="center">
-<img src="/images/video/videoUItests.gif" alt="video"/></a>
+<img src="/images/video/form.gif" alt="video"/></a>
 </p>
 
 [Вернуться к оглавлению ⬆](#Ссылка)
