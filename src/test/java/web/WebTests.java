@@ -5,9 +5,11 @@ import static com.codeborne.selenide.Condition.*;
 import com.codeborne.selenide.*;
 import com.codeborne.xlstest.XLS;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Feature;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -34,55 +36,39 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)  // параллельный запуск
 public class WebTests {
-    private String browser;
+    // private String browser;  // параллельный запуск
 
-    // блок ниже для кроссбраузерного тестирования
-    @ParameterizedTest(name = "{index}: Running test on {0}")
-    @MethodSource("browsers")
-    @DisplayName("Browser Parametrization")
-    void setBrowser(String browser) {
-        this.browser = browser;
+    static Stream<Arguments> browserArguments() {
+        return Stream.of(
+                arguments("chrome", "127.0"),
+                arguments("firefox", "125.0"),
+                arguments("safari", "15.0")
+        );
     }
 
-    static Stream<String> browsers() {
-        return Stream.of("chrome", "firefox"); // можно добавлять или убирать браузеры
-    }
-
-    @BeforeEach
-    public  void main() throws MalformedURLException {
-        //Url удалённого веб драйвера
-        Configuration.remote = "http://192.168.0.103:4444/wd/hub";
-        //Определяем какой браузер будем использовать
-        Configuration.browser = browser;
-        //Размер окна браузера
-        Configuration.browserSize = "1920x1080";
-        //Создаём объект класса DesiredCapabilities, используется как настройка  вашей конфигурации с помощью пары ключ-значение
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            put("enableVideo", true);
-        }});
-
-        Configuration.browserCapabilities = capabilities;
-
-    }
     // возможно лишний кусок
     @AfterEach
     public void main2() {
         Selenide.closeWebDriver();
     }
 
-    @Tag("Web1")
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Header")
+    @Tag("WEB")
     @DisplayName("Header. Изменение валюты на KZT")
-    void headerChangingCurrency() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    public void headerChangingCurrency(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
+
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
+        new WebPages().forcedPause4sec(); // это временно чтобы видео было подольше
         step("Выбираем казахстанский тенге", () -> {
             $(".simple-menu__item.header__currency.j-b-header-country").hover();
             $(".country").find(byText("Казахстанский тенге")).click();
@@ -95,10 +81,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Header")
     @DisplayName("Header. Переход в доставку")
-    void headerSwitchingToDelivery() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void headerSwitchingToDelivery(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -113,10 +101,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Header")
     @DisplayName("Header. Переход в пустую корзину")
-    void headerSwitchingToBasket() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void headerSwitchingToBasket(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -128,10 +118,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Header")
     @DisplayName("Header. Переход в Продавайте на Wildberries")
-    void headerSwitchingToSell() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void headerSwitchingToSell(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -149,10 +141,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Header")
     @DisplayName("Header. Работа в Wildberries")
-    void headerSwitchingToWork() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void headerSwitchingToWork(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -170,10 +164,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Header")
     @DisplayName("Header. Переход в авиабилеты")
-    void headerSwitchingToAirlineTicket() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void headerSwitchingToAirlineTicket(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -192,10 +188,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Корзина")
     @DisplayName("Корзина. Переход из пустой корзины на главную")
-    void basketGoMainPage() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void basketGoMainPage(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем пустую корзину", () -> {
             open("https://www.wildberries.ru/lk/basket");
         });
@@ -210,10 +208,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Корзина")
     @DisplayName("Корзина. Удаление товара")
-    void basketDeleteGoods() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void basketDeleteGoods(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -235,10 +235,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Корзина")
     @DisplayName("Корзина. Увеличение количества товара")
-    void basketIncreasingQuantityGoods() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void basketIncreasingQuantityGoods(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем карточку тестового товара №1", () -> {
             new WebPages().openTestProductCard1();
         });
@@ -293,10 +295,12 @@ public class WebTests {
         return Double.parseDouble(priceText.replaceAll("[^0-9]", ""));
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Корзина")
     @DisplayName("Корзина. Уменьшение количества товара")
-    void basketReducingQuantityGoods() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void basketReducingQuantityGoods(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем карточку тестового товара №1", () -> {
             new WebPages().openTestProductCard1();
         });
@@ -338,24 +342,7 @@ public class WebTests {
 
             // Проверяем что цена увеличилась в 2 раза
             assertEquals(listItemPriceQuantity1Num * 2, listItemPriceQuantity2Num);
-            /*
-            $(".accordion__goods-count").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("1 товар"));
-            $(".count__plus.plus").click();
-            $(".accordion__goods-count").shouldHave(text("2 товара"));
-            // Пауза на 4 секунды, так как окончательная цена рассчитывается в процессе прогрузки страницы
-            new WebPages().forcedPause4sec();
-            // Селекторы с ценами стоимости товара в количестве 2 шт
-            SelenideElement priceElement1 = $(".list-item__price-new.wallet");
-            SelenideElement priceElement2 = $(".b-top__total.line span:nth-of-type(2)");
 
-            // Извлекаем текст цен
-            String priceText1 = priceElement1.getText();
-            String priceText2 = priceElement2.getText();
-            // Парсим строку в числа
-            double priceNum1 = parsePrice(priceText1);
-            double priceNum2 = parsePrice(priceText2);
-            assertEquals(priceNum1, priceNum2);        // Сравниваем стоимость 2 шт в списке и в итого
-         */
             $(".count__minus.minus").click();
             $(".accordion__goods-count").shouldHave(text("1 товар"));
             // Пауза на 4 секунды, так как окончательная цена рассчитывается в процессе прогрузки страницы
@@ -377,10 +364,12 @@ public class WebTests {
     });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Карточка товара")
     @DisplayName("Карточка товара. Переход в отзывы через оценку")
-    void productCardSwitchingToReviewsViaRating() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void productCardSwitchingToReviewsViaRating(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем карточку тестового товара №1", () -> {
             new WebPages().openTestProductCard1();
         });
@@ -398,10 +387,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Карточка товара")
     @DisplayName("Карточка товара. Переход в отзывы через кнопку Смотреть все отзывы")
-    void productCardSwitchingToReviewsViaButton() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void productCardSwitchingToReviewsViaButton(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем карточку тестового товара №1", () -> {
             new WebPages().openTestProductCard1();
         });
@@ -420,10 +411,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Карточка товара")
     @DisplayName("Карточка товара. Переход в характеристики")
-    void productCardSwitchingToSpecifications() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void productCardSwitchingToSpecifications(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем карточку тестового товара №1", () -> {
             new WebPages().openTestProductCard1();
         });
@@ -438,10 +431,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Авторизация")
     @DisplayName("Вход. Попытка входа без номера")
-    void incorrectEntry() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void incorrectEntry(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -459,10 +454,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Поиск")
     @DisplayName("Поиск. Поиск по тексту")
-    void SearchText() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void SearchText(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -481,10 +478,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Поиск")
     @DisplayName("Поиск. Поиск по фото")
-    void searchPhoto() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void searchPhoto(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -502,10 +501,12 @@ public class WebTests {
         });
     }
 
-    @Test
-    @DisplayName("Поиск. Неккоректный поиск")
-    void searchUncorrected() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Поиск")
+    @DisplayName("Поиск. Некорректный поиск")
+    void searchUncorrected(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем главную страницу", () -> {
             new WebPages().openMainPage();
         });
@@ -519,10 +520,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Регистрация")
     @DisplayName("Регистрация. Заполнение формы регистрации сгенерированными тестовыми данными")
-    void registrationForm() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+    void registrationForm(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         WebPagesRegistrationForm form = new WebPagesRegistrationForm();
             form.openPage();
             form.setFirstName();
@@ -540,9 +543,12 @@ public class WebTests {
             form.shouldTable();
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Работа с файлами")
     @DisplayName("Загрузка картинки из ресурсов")
-    void selenideUploadTest() {
+    void selenideUploadTest(String browserName, String browserVersion) {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем страницу загрузки картинки", () -> {
             open("https://demoqa.com/upload-download");
         });
@@ -554,9 +560,12 @@ public class WebTests {
         });
     }
 
-    @Test
+    @ParameterizedTest  // параллельный запуск
+    @MethodSource("browserArguments")  // параллельный запуск
+    @Feature("Работа с файлами")
     @DisplayName("Скачивание и проверка xls документа")
-    void selenideDownloadXlsTest() throws Exception {
+    void selenideDownloadXlsTest(String browserName, String browserVersion) throws Exception {
+        BrowserConfig.setupBrowser(browserName, browserVersion);
         step("Открываем страницу с xls документом", () -> {
             open("https://samplelib.com/ru/sample-xls.html");
         });
