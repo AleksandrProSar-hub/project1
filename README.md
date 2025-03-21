@@ -41,62 +41,42 @@
 `Ubuntu` - физический сервер для запуска автотестов.\
 `Docker` - для запуска контейнеров на сервере.
 
-## :maple_leaf: Список проверок, реализованных в автотестах
 
-- [x] Проверка кликабельности элементов меню на главной станице
-- [x] Поиск вакансии QA Automation
-- [x] Поиск вакансий (параметризованные тесты)
-- [x] Поиск вакансии с использованием фильтров
-- [x] Проверка полей формы для отклика на вакансию
+# :maple_leaf: WEB UI
 
-## :maple_leaf: Список проверок, реализованных в ручных тестах
+## :maple_leaf: Список проверок, реализованных в автотестах web
 
-- [x] Проверка блока «Наши мероприятия» на главной странице
-- [x] Проверка кликабельности элементов меню в футере на на странице с вакансией
-- [x] Проверка функции отправки резюме недопустимого формата
+- [x] Авторизация. Проверка на пустой номер
+- [x] Header. Изменения валюты. Переходы по вкладкам. 
+- [x] Поиск. По тексу, по фото, неккоректный поиск
+- [x] Карточка товара. Переход в отзывы. Переход в характеристики.
+- [x] Корзина. Уменьшение количества товара, увеличение количества товара, переход на главную, удаление товара
+- [x] Работа с файлами. Загрузка и скачивание 
+- [x] Регистрация. Заполнение формы
 
-## :maple_leaf: Запуск тестов
+## :maple_leaf: Подходы к автоматизации
 
-###  Локальный запуск :
-Пример командной строки:
-```bash
-gradle clean ui_tests
-```
-Получение отчёта:
-```bash
-allure serve build/allure-results
-```
+- [x] Лямбда-степы. Использование лямбда-выражений для создания тестовых шагов позволило создать более чистый и понятный код. 
+- [x] Генерация тестовых данных с помощью Java Faker. Для заполнения формы регистрации использовалась библиотека Java Faker, генерирующая реалистичные тестовые данные.
+- [x] Кроссбраузерное тестирование с @ParameterizedTest. Использование аннотации @ParameterizedTest позволило автоматизировать тестирование на различных браузерах. Каждый тест прогоняется на последних версиях chrome, firefox и safari.
+- [x] Работа с файлами. Реализована функциональность работы с файлами. Загрузка, скачивание и проверка корректности.
 
-###  Удаленный запуск (в Jenkins):
-1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/C16-NazilyaMullagildina_UI-tests/">проект</a>
+## :maple_leaf: Окружение
+- [x] GitHub, Jenkins, сервер на Ubuntu, Docker, Selenoid
+- [x] Браузер Safari был также залит в Selenoid, что удобнее и дешевле тестов на маках
 
-![This is an image](/images/screens/Jenkins1.png)
-
-2. Выбрать пункт **Собрать с параметрами**
-3. В случае необходимости изменить параметры, выбрав значения из выпадающих списков
-4. Нажать **Собрать**
-5. Результат запуска сборки можно посмотреть в отчёте Allure
-
-![This is an image](/images/screens/Jenkins3.png)
-
-## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="https://jenkins.autotests.cloud/job/C16-NazilyaMullagildina_UI-tests/17/allure/">Allure report</a>
+## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в  Allure report</a>
 
 ###  Главное окно
 
 <p align="center">
-<img title="Allure Overview Dashboard" src="images/screens/Allure_Report1.png">
+<img title="Allure Overview Dashboard" src="images/screens/allure1.jpg">
 </p>
 
 ###  Тесты
 
 <p align="center">
-<img title="Allure Tests" src="images/screens/Allure_Report2.png">
-</p>
-
-###  Графики
-
-<p align="center">
-<img title="Allure Graphics" src="images/screens/Allure_Report3.png">
+<img title="Allure Tests" src="images/screens/allure2.jpg">
 </p>
 
 
