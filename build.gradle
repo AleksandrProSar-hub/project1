@@ -46,9 +46,19 @@ test {
     useJUnitPlatform()
 }
 
+
+
+/* жесткий запуск определенного тега
 task backend_test(type: Test) {
     useJUnitPlatform{
-        // includeTags("web")  // тут было указано "simple" запускает тесты с определенным тегом
+         includeTags("web")  // тут было указано "simple" запускает тесты с определенным тегом
+    }
+} */
+
+tasks.withType(Test) {
+    useJUnitPlatform {
+        // Фильтрация по тегу, будет установлено в Jenkins
+        includeTags System.getProperty("test.tag", "")
     }
 }
 
@@ -56,15 +66,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-// Запуск тестов по tag
-tasks.withType(Test) {
-    systemProperties(System.getProperties())
-    useJUnitPlatform {
-        if (System.getProperty("tag") != null && !System.getProperty("tag").isEmpty()) {
-            includeTags System.getProperty("tag")
-        }
-    }
-}
 
 // Test IT
 tasks.jar {
