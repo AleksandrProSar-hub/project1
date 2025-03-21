@@ -84,6 +84,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Header")
+    @Tag("WEB")
     @DisplayName("Header. Переход в доставку")
     void headerSwitchingToDelivery(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -104,6 +105,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Header")
+    @Tag("WEB")
     @DisplayName("Header. Переход в пустую корзину")
     void headerSwitchingToBasket(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -121,6 +123,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Header")
+    @Tag("WEB")
     @DisplayName("Header. Переход в Продавайте на Wildberries")
     void headerSwitchingToSell(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -142,6 +145,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Header")
+    @Tag("WEB")
     @DisplayName("Header. Работа в Wildberries")
     void headerSwitchingToWork(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -165,6 +169,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Header")
+    @Tag("WEB")
     @DisplayName("Header. Переход в авиабилеты")
     void headerSwitchingToAirlineTicket(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -189,6 +194,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Корзина")
+    @Tag("WEB")
     @DisplayName("Корзина. Переход из пустой корзины на главную")
     void basketGoMainPage(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -209,6 +215,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Корзина")
+    @Tag("WEB")
     @DisplayName("Корзина. Удаление товара НЕ РАБОТАЕТ сафари")
     void basketDeleteGoods(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -236,6 +243,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Корзина")
+    @Tag("WEB")
     @DisplayName("Корзина. Увеличение количества товара НЕ РАБОТАЕТ сафари")
     void basketIncreasingQuantityGoods(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -296,6 +304,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Корзина")
+    @Tag("WEB")
     @DisplayName("Корзина. Уменьшение количества товара НЕ РАБОТАЕТ сафари")
     void basketReducingQuantityGoods(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -365,6 +374,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Карточка товара")
+    @Tag("WEB")
     @DisplayName("Карточка товара. Переход в отзывы через оценку")
     void productCardSwitchingToReviewsViaRating(String browserName, String browserVersion) { // на данном тесте сафари зафисает, не стал копать
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -388,6 +398,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Карточка товара")
+    @Tag("WEB")
     @DisplayName("Карточка товара. Переход в отзывы через кнопку Смотреть все отзывы")
     void productCardSwitchingToReviewsViaButton(String browserName, String browserVersion) { // на данном тесте сафари зафисает, не стал копать
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -412,6 +423,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Карточка товара")
+    @Tag("WEB")
     @DisplayName("Карточка товара. Переход в характеристики")
     void productCardSwitchingToSpecifications(String browserName, String browserVersion) { // на данном тесте сафари зафисает, не стал копать
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -429,6 +441,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Авторизация")
+    @Tag("WEB")
     @DisplayName("Вход. Попытка входа без номера")
     void incorrectEntry(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -452,6 +465,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Поиск")
+    @Tag("WEB")
     @DisplayName("Поиск. Поиск по тексту")
     void SearchText(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -476,6 +490,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Поиск")
+    @Tag("WEB")
     @DisplayName("Поиск. Поиск по фото")   // не работает сафари
     void searchPhoto(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -499,6 +514,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Поиск")
+    @Tag("WEB")
     @DisplayName("Поиск. Некорректный поиск")
     void searchUncorrected(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -518,6 +534,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Регистрация")
+    @Tag("WEB")
     @DisplayName("Регистрация. Заполнение формы регистрации сгенерированными тестовыми данными")
     void registrationForm(String browserName, String browserVersion) { // не работает сафари
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -541,6 +558,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Работа с файлами")
+    @Tag("WEB")
     @DisplayName("Загрузка картинки из ресурсов") // не работает сафари
     void selenideUploadTest(String browserName, String browserVersion) {
         BrowserConfig.setupBrowser(browserName, browserVersion);
@@ -558,6 +576,7 @@ public class WebTests {
     @ParameterizedTest  // параллельный запуск
     @MethodSource("browserArguments")  // параллельный запуск
     @Feature("Работа с файлами")
+    @Tag("WEB")
     @DisplayName("Скачивание и проверка xls документа")
     void selenideDownloadXlsTest(String browserName, String browserVersion) throws Exception {
         BrowserConfig.setupBrowser(browserName, browserVersion);
