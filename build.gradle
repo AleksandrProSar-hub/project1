@@ -89,7 +89,7 @@ tasks.compileTestJava {
 tasks.withType(Test) {
     systemProperties(System.getProperties())
     useJUnitPlatform() {
-        includeTags(System.getProperty("test.tag", ""))
+        includeTags(System.getProperty("test.tag", "")) // чтобы запускать через idea нужно мьютить данный код
     }
     testLogging {
         lifecycle {

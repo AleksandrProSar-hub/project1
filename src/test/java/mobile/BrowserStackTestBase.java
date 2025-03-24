@@ -4,6 +4,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.MutableCapabilities;
@@ -13,22 +14,20 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class BrowserStackTestBase {
+
     static AndroidDriver driver;
 
-    public static void main(String[] args) throws MalformedURLException {
+
+    public  void main(String[] args) throws MalformedURLException {
         // Initialization of driver as you already have it
         initializeDriver();
     }
 
-    @BeforeAll
-    public static void initializeDriver() throws MalformedURLException {
-        // Configuration.browser = BrowserstackMobileDriverVar4.class.getName();
-        // Configuration.browserSize = null; // показываем selenide что работаем не с браузером
-
+    @BeforeEach
+    public  void initializeDriver() throws MalformedURLException {
         MutableCapabilities capabilities = new MutableCapabilities();
         capabilities.setCapability("app", "bs://d7728b5e8ef2c45ca1fa2cc426198d9f281dd535"); // “bs://sample.app” - это специальный URL-адрес в формате BrowserStack, который указывает на приложение:
         // bs:// - префикс, обозначающий, что файл находится в хранилище BrowserStack
-        // sample.app - имя файла приложения
 
         HashMap<String, Object> browserstackOptions = new HashMap<>();
         browserstackOptions.put("userName", "alexpro_zF5NjW");
@@ -48,17 +47,11 @@ public class BrowserStackTestBase {
                 new URL("https://hub-cloud.browserstack.com/wd/hub"),
                 capabilities
         );
-
-    }
-
-    @BeforeEach
-    void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @AfterEach
+    public  void tearDown() {
         if (driver != null) {
             driver.quit();
         }
