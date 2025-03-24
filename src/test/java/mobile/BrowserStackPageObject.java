@@ -23,7 +23,7 @@ public class BrowserStackPageObject {
 
     private final String listDescription1 = "Description 1";
     private final String listDescription2 = "Description 2";
-    @Step ("Скипаем онбординг")
+    @Step("Скипаем онбординг")
     public void skipOnboarding() {
         driver.findElement(AppiumBy.id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
     }

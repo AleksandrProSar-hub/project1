@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
 //   agent("org.aspectj:aspectjweaver:1.9.22")// Test IT
+    implementation("org.aspectj:aspectjweaver:1.9.22") // для step аннотаций
     implementation('org.aspectj:aspectjrt:1.9.22') // Test IT
     implementation("org.junit.platform:junit-platform-launcher:1.9.0")// Test IT
     implementation("org.slf4j:slf4j-api:1.7.36")// Test IT
@@ -88,8 +89,8 @@ tasks.compileTestJava {
 
 tasks.withType(Test) {
     systemProperties(System.getProperties())
-    useJUnitPlatform() {
-        includeTags(System.getProperty("test.tag", "")) // чтобы запускать через idea нужно мьютить данный код
+    useJUnitPlatform()  {
+        includeTags(System.getProperty("test.tag", "")) // чтобы запускать через idea нужно мьютить данный код.
     }
     testLogging {
         lifecycle {
