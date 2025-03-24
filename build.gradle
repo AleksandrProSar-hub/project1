@@ -21,6 +21,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.36")// Test IT
     implementation("org.slf4j:slf4j-simple:1.7.36")// Test IT
     implementation("com.github.javafaker:javafaker:1.0.2")
+    implementation("org.seleniumhq.selenium:selenium-java:3.141.59") // selenoid android driver
   //  implementation(project(":testit-java-commons")) // Test IT
 
 
@@ -38,6 +39,7 @@ dependencies {
             "io.appium:java-client:8.3.0",
             "commons-io:commons-io:2.11.0",
             "com.codeborne:xls-test:1.4.3",
+            "org.seleniumhq.selenium:selenium-remote-driver:3.141.59", // selenoid android driver
             "ru.testit:testit-adapter-junit5:2.6.0-TMS-CLOUD")
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
@@ -82,6 +84,18 @@ tasks.jar {
 // Test IT
 tasks.compileTestJava {
     options.compilerArgs.add("-parameters")
+}
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
 

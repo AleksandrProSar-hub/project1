@@ -36,8 +36,8 @@ public class BackendTests {
                 .then().log().ifStatusCodeIsEqualTo(400)
                 .extract().as(ResponseModel.class);
 
-        assertThat(modelResponseLombok.getId()).isEqualTo(4);
-        assertThat(modelResponseLombok.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
+        assertThat(modelResponseLombok.getId()).as("Некорректный ID").isEqualTo(4);
+        assertThat(modelResponseLombok.getToken()).as("Некорректный Token").isEqualTo("QpwL5tke4Pnpja7X4");
 
     }
 
@@ -78,7 +78,7 @@ public class BackendTests {
                 .then().statusCode(200)
                 .extract().as(ResponseModel.class);
 
-        assertThat(modelResponseLombok.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
+        assertThat(modelResponseLombok.getToken()).as("Некорректный Token").isEqualTo("QpwL5tke4Pnpja7X4");
     }
 
     @DisplayName("Неуспешный вход")

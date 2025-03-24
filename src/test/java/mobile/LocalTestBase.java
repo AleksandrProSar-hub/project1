@@ -7,20 +7,21 @@ import mobile.driver.LocalMobileDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LocalTestBase {
     @BeforeAll
-    static void beforeAll() {
-        Configuration.browser = LocalMobileDriver.class.getName();
-        Configuration.browserSize = null;
+    static void beforeAll() throws Exception {
+        Configuration.browser = LocalMobileDriver.class.getName(); // локальный запуск
+       Configuration.browserSize = null; // локальный запуск
     }
 
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        open();
+        // open(); // локальный запуск
     }
 
     @AfterEach

@@ -1,13 +1,11 @@
 package mobile.pages;
 
-import com.codeborne.selenide.Condition;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
 import static org.openqa.selenium.By.xpath;
 
-public class MobilePages {
+public class LocalMobilePages {
 
     private final String listName1 = "Список 1";
     private final String listName2 = "Список 2";

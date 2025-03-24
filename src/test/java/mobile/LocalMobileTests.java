@@ -1,6 +1,6 @@
 package mobile;
 
-import mobile.pages.MobilePages;
+import mobile.pages.LocalMobilePages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
@@ -9,9 +9,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
-import static org.openqa.selenium.By.xpath;
 
-public class MobileTests extends LocalTestBase {
+public class LocalMobileTests extends LocalTestBase {
 
     @DisplayName("Онбординг. Проверяем страницы")
     @Test
@@ -42,162 +41,172 @@ public class MobileTests extends LocalTestBase {
     @DisplayName("Поиск. Стандартно") //
     @Test
     void searchTest(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().searchJava();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.searchJava();
     }
 
     @DisplayName("Навтабы. Переход в сохраненные пустые") //
     @Test
     void searchTest1(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionSaved();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.transitionSaved();
     }
 
     @DisplayName("Навтабы. Переход в найти. Без истории") //
     @Test
     void searchTest2(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionSearch();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.transitionSearch();
     }
 
     @DisplayName("Навтабы. Переход в правки. Без истории") //
     @Test
     void searchTest3(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionEdits();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.transitionEdits();
     }
 
     @DisplayName("Навтабы. Переход в ещё. Без истории") //
     @Test
     void searchTest4(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionMore();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.transitionMore();
     }
 
     @DisplayName("Найденная инфа. Добавление статьи в сохраненные по умолчанию") //
     @Test
     void searchTest5(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().searchJava();
-        new MobilePages().transitionToFoundArticle();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.searchJava();
+        pages.transitionToFoundArticle();
         // добавление статьи с сохраненные
-        new MobilePages().clickSaveButton();
+        pages.clickSaveButton();
         // возвращенние на главную страницу
-        new MobilePages().returningFromSearchToMainPage();
+        pages.returningFromSearchToMainPage();
         // переходим в Сохраненные
-        new MobilePages().transitionSaved();
+        pages.transitionSaved();
         // переходим в первый сохраненный список
-        new MobilePages().goToFirstSavedList();
+        pages.goToFirstSavedList();
         // скрываем подсказку
-        new MobilePages().hidingHint();
+        pages.hidingHint();
         // проверяем название и описание сохраненной статьи
-        new MobilePages().shouldHaveNameAndDescriptionArticleSaveUserList();
+        pages.shouldHaveNameAndDescriptionArticleSaveUserList();
     }
 
     @DisplayName("Сохраненные. Создание нового списка")
     @Test
     void searchTest6(){
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionSaved();
-        new MobilePages().savedMenuButton();
-        new MobilePages().savedMenuCreateNewList();
-        new MobilePages().sendKeysNameNewList();
-        new MobilePages().sendKeysDescriptionNewList();
-        new MobilePages().clickButtonOk();
-        new MobilePages().listNewShouldHaveNameAndDescription();
+        LocalMobilePages pages = new LocalMobilePages();
+        pages.skipOnboarding();
+        pages.transitionSaved();
+        pages.savedMenuButton();
+        pages.savedMenuCreateNewList();
+        pages.sendKeysNameNewList();
+        pages.sendKeysDescriptionNewList();
+        pages.clickButtonOk();
+        pages.listNewShouldHaveNameAndDescription();
     }
 
     @DisplayName("Сохраненные. Удаление списка") //
     @Test
     void searchTest7(){
+        LocalMobilePages pages = new LocalMobilePages();
         // создание нового списка
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionSaved();
-        new MobilePages().savedMenuButton();
-        new MobilePages().savedMenuCreateNewList();
-        new MobilePages().sendKeysNameNewList();
-        new MobilePages().sendKeysDescriptionNewList();
-        new MobilePages().clickButtonOk();
+        pages.skipOnboarding();
+        pages.transitionSaved();
+        pages.savedMenuButton();
+        pages.savedMenuCreateNewList();
+        pages.sendKeysNameNewList();
+        pages.sendKeysDescriptionNewList();
+        pages.clickButtonOk();
         // проверяем что список создался. проверяем имя и описание созданного списка
-        new MobilePages().listNewShouldHaveNameAndDescription();
+        pages.listNewShouldHaveNameAndDescription();
         // открываем список
-        new MobilePages().goToFirstSavedList();
+        pages.goToFirstSavedList();
         // скрываем подсказку
-        new MobilePages().hidingHint();
+        pages.hidingHint();
         // заходим в меню списка
-        new MobilePages().listMenuButton();
+        pages.listMenuButton();
         // удаляем список
-        new MobilePages().listMenuButtonDeleteList();
-        new MobilePages().clickButtonOk();
+        pages.listMenuButtonDeleteList();
+        pages.clickButtonOk();
         // проверяем что списки отсутствуют
-        new MobilePages().shouldNotSavedLists();
+        pages.shouldNotSavedLists();
     }
 
     @DisplayName("Сохраненные. Изменение названия и описания списка")
     @Test
     void searchTest8(){
+        LocalMobilePages pages = new LocalMobilePages();
         // создание нового списка
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionSaved();
-        new MobilePages().savedMenuButton();
-        new MobilePages().savedMenuCreateNewList();
-        new MobilePages().sendKeysNameNewList();
-        new MobilePages().sendKeysDescriptionNewList();
-        new MobilePages().clickButtonOk();
+        pages.skipOnboarding();
+        pages.transitionSaved();
+        pages.savedMenuButton();
+        pages.savedMenuCreateNewList();
+        pages.sendKeysNameNewList();
+        pages.sendKeysDescriptionNewList();
+        pages.clickButtonOk();
         // проверяем что список создался. проверяем имя и описание созданного списка
-        new MobilePages().listNewShouldHaveNameAndDescription();
+        pages.listNewShouldHaveNameAndDescription();
         // открываем список
-        new MobilePages().goToFirstSavedList();
+        pages.goToFirstSavedList();
         // скрываем подсказку
-        new MobilePages().hidingHint();
+        pages.hidingHint();
         // заходим в меню списка
-        new MobilePages().listMenuButton();
+        pages.listMenuButton();
         // выбираем пункт изменить название списка
-        new MobilePages().listMenuButtonChangeNameList();
+        pages.listMenuButtonChangeNameList();
         // меняем название и описание списка
-        new MobilePages().sendKeysNameOldList();
-        new MobilePages().sendKeysDescriptionOldList();
-        new MobilePages().clickButtonOk();
+        pages.sendKeysNameOldList();
+        pages.sendKeysDescriptionOldList();
+        pages.clickButtonOk();
         // проверяем имя и описание списка после изменений
-        new MobilePages().listOldShouldHaveNameAndDescription();
+        pages.listOldShouldHaveNameAndDescription();
     }
 
     @DisplayName("Сохраненные. Добавление статьи в список")
     @Test
     void addingArticleToUserList(){
+        LocalMobilePages pages = new LocalMobilePages();
         // создание нового списка
-        new MobilePages().skipOnboarding();
-        new MobilePages().transitionSaved();
-        new MobilePages().savedMenuButton();
-        new MobilePages().savedMenuCreateNewList();
-        new MobilePages().sendKeysNameNewList();
-        new MobilePages().sendKeysDescriptionNewList();
-        new MobilePages().clickButtonOk();
+        pages.skipOnboarding();
+        pages.transitionSaved();
+        pages.savedMenuButton();
+        pages.savedMenuCreateNewList();
+        pages.sendKeysNameNewList();
+        pages.sendKeysDescriptionNewList();
+        pages.clickButtonOk();
         // проверяем что список создался. проверяем имя и описание созданного списка
-        new MobilePages().listNewShouldHaveNameAndDescription();
+        pages.listNewShouldHaveNameAndDescription();
         // переходим в ленту
-        new MobilePages().transitionFeed();
+        pages.transitionFeed();
         // ищем статью java
-        new MobilePages().searchJava();
+        pages.searchJava();
         // переход в первую найденную статью
-        new MobilePages().transitionFirstFoundArticle();
+        pages.transitionFirstFoundArticle();
         // нажимаем кнопку сохранить
-        new MobilePages().clickSaveButton();
+        pages.clickSaveButton();
         // подтверждаем добавление статьи в список
-        new MobilePages().confirmingAdditionToList();
+        pages.confirmingAdditionToList();
         // выбираем список в который добавим статью
-        new MobilePages().selectingListForArticle();
+        pages.selectingListForArticle();
         // возвращаемся на главную страницу
-        new MobilePages().returningFromSearchToMainPage();
+        pages.returningFromSearchToMainPage();
         // отказываемся от синхронизации списков
-        new MobilePages().refusingSynchronizeLists();
+        pages.refusingSynchronizeLists();
         // заходим в сохраненные
-        new MobilePages().transitionSaved();
+        pages.transitionSaved();
         // переход в пользовательский список
-        new MobilePages().transitionUserList();
+        pages.transitionUserList();
         // скрываем подсказку
-        new MobilePages().hidingHint();
+        pages.hidingHint();
         // проверяем название сохраненной статьи в пользователском списке
-        new MobilePages().shouldHaveNameAndDescriptionArticleSaveUserList();
+        pages.shouldHaveNameAndDescriptionArticleSaveUserList();
     }
 }
