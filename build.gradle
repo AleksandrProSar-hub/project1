@@ -88,8 +88,9 @@ tasks.compileTestJava {
 
 tasks.withType(Test) {
     systemProperties(System.getProperties())
-    useJUnitPlatform()
-
+    useJUnitPlatform() {
+        includeTags(System.getProperty("test.tag", ""))
+    }
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
