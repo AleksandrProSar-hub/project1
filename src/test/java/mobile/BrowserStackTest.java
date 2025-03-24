@@ -130,7 +130,7 @@ public class BrowserStackTest extends BrowserStackTestBase {
     @Test
     @Feature("Сохраненные")
     @Tag("MOBILE")
-    @DisplayName("Сохраненные. Добавление статьи в список")
+    @DisplayName("Сохраненные. Изменение названия и описания списка")
     void searchTest8(){
         BrowserStackPageObject pages = new BrowserStackPageObject();
         // создание нового списка
