@@ -1,4 +1,4 @@
-## Проект по автоматизации тестирования (Web UI, Backend, Mobile UI)
+## Проект по автоматизации тестирования (Web UI, Mobile UI, Backend)
 <a name="Ссылка"></a>
 
 ## :maple_leaf: Содержание:
@@ -11,6 +11,16 @@
   - Окружение
   - Allure-отчет
   - Видео прохождения тестов
+- Mobile UI
+  - Список проверок, реализованных в тестах
+  - Подходы к автоматизации
+  - Allure-отчет
+  - Видео прохождения тестов
+- Backend
+  - Список проверок, реализованных в тестах
+  - Подходы к автоматизации
+  - Allure-отчет
+    
 
 ## :maple_leaf: Технологии и инструменты
 
@@ -163,7 +173,20 @@
 
 ## :maple_leaf: Подходы к автоматизации
 
-- [x] Lombok. Bспользуется для сокращения количества шаблонного кода. 
+- [x] Lombok. Bспользуется для сокращения количества шаблонного кода.
+
+## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в  Allure report</a>
+###  Главное окно
+
+<p align="center">
+<img title="Allure Overview Dashboard" src="images/screens/allure1back.jpg">
+</p>
+
+###  Тесты
+
+<p align="center">
+<img title="Allure Tests" src="images/screens/allure2back.jpg">
+</p>
 
 
 [Вернуться к оглавлению ⬆](#Ссылка)
