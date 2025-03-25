@@ -6,7 +6,7 @@
 
 * <a href="#tools">- Технологии и инструменты</a>
 * <a href="#web">- Web UI</a>
-* <a href="#casesweb">  - Список проверок, реализованных в тестах</a>
+ <a href="#casesweb">  - Список проверок, реализованных в тестах</a>
 * <a href="#webavto">  - Подходы к автоматизации</a>
 * <a href="#environment">  - Окружение</a>
 * <a href="#allweb">  - Allure-отчет</a>
