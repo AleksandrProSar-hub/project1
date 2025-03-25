@@ -5,18 +5,18 @@
 
 
 * <a href="#tools">- Технологии и инструменты</a>
-* <a href="#web">- Web UI</a>
- <a href="#casesweb">  - Список проверок, реализованных в тестах</a>
-* <a href="#webavto">  - Подходы к автоматизации</a>
-* <a href="#environment">  - Окружение</a>
-* <a href="#allweb">  - Allure-отчет</a>
-* <a href="#videoweb">  - Видео прохождения тестов</a>
-* <a href="#mob">- Mobile UI</a>
+* <a href="#web">Web UI</a>
+* <a href="#casesweb">- Список проверок, реализованных в тестах</a>
+* <a href="#webavto">- Подходы к автоматизации</a>
+* <a href="#environment">- Окружение</a>
+* <a href="#allweb">- Allure-отчет</a>
+* <a href="#videoweb">- Видео прохождения тестов</a>
+* <a href="#mob">Mobile UI</a>
 * <a href="#casesmob">  - Список проверок, реализованных в тестах</a>
 * <a href="#mobavto">  - Подходы к автоматизации</a>
 * <a href="#allmob">  - Allure-отчет</a>
 * <a href="#videomob">  - Видео прохождения тестов</a>
-* <a href="#back">- Backend</a>
+* <a href="#back">Backend</a>
 * <a href="#casesback">  - Список проверок, реализованных в тестах</a>
 * <a href="#backavto">  - Подходы к автоматизации</a>
 * <a href="#allback">  - Allure-отчет</a>
