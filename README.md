@@ -4,24 +4,24 @@
 ## :maple_leaf: Содержание:
 
 
-- Технологии и инструменты
-- Web UI
-  - Список проверок, реализованных в тестах
-  - Подходы к автоматизации
-  - Окружение
-  - Allure-отчет
-  - Видео прохождения тестов
-- Mobile UI
-  - Список проверок, реализованных в тестах
-  - Подходы к автоматизации
-  - Allure-отчет
-  - Видео прохождения тестов
-- Backend
-  - Список проверок, реализованных в тестах
-  - Подходы к автоматизации
-  - Allure-отчет
+* <a href="#tools">- Технологии и инструменты</a>
+* <a href="#web">- Web UI</a>
+* <a href="#casesweb">  - Список проверок, реализованных в тестах</a>
+* <a href="#webavto">  - Подходы к автоматизации</a>
+* <a href="#environment">  - Окружение</a>
+* <a href="#allweb">  - Allure-отчет</a>
+* <a href="#videoweb">  - Видео прохождения тестов</a>
+* <a href="#mob">- Mobile UI</a>
+* <a href="#casesmob">  - Список проверок, реализованных в тестах</a>
+* <a href="#mobavto">  - Подходы к автоматизации</a>
+* <a href="#allmob">  - Allure-отчет</a>
+* <a href="#videomob">  - Видео прохождения тестов</a>
+* <a href="#back">- Backend</a>
+* <a href="#casesback">  - Список проверок, реализованных в тестах</a>
+* <a href="#backavto">  - Подходы к автоматизации</a>
+* <a href="#allback">  - Allure-отчет</a>
     
-
+<a id="tools"></a>
 ## :maple_leaf: Технологии и инструменты
 
 <p align="center">
@@ -51,10 +51,11 @@
 `Selenoid` - для удаленного запуска браузера в `Docker` контейнерах.\
 `Android Studio tools`, `Appium`, `Appium Inspector`, `Vysor` - для запуска мобильных тестов локально на эмуляторе мобильных устройств.\
 `Allure Report` - для визуализации результатов тестирования.\
+`Browserstack` - запуск мобильных автотестов.\
 `Ubuntu` - физический сервер для запуска автотестов.\
 `Docker` - для запуска контейнеров на сервере.
 
-
+<a id="web"></a>
 # :maple_leaf: WEB UI
 ## :maple_leaf: Сайт для основных тестов
 <p align="center">
@@ -66,6 +67,7 @@
 <img title="Toolsqa" src="images/logo/toolsqa.png">
 </p>
 
+<a id="casesweb"></a>
 ## :maple_leaf: Список проверок, реализованных в автотестах web
 
 - [x] Авторизация. Проверка на пустой номер
@@ -76,6 +78,7 @@
 - [x] Работа с файлами. Загрузка и скачивание 
 - [x] Регистрация. Заполнение формы
 
+<a id="webavto"></a>
 ## :maple_leaf: Подходы к автоматизации
 
 - [x] Лямбда-степы. Использование лямбда-выражений для создания тестовых шагов позволило создать более чистый и понятный код. 
@@ -83,10 +86,12 @@
 - [x] Кроссбраузерное тестирование с @ParameterizedTest. Использование аннотации @ParameterizedTest позволило автоматизировать тестирование на различных браузерах. Каждый тест прогоняется на последних версиях chrome, firefox и safari.
 - [x] Работа с файлами. Реализована функциональность работы с файлами. Загрузка, скачивание и проверка корректности.
 
+<a id="environment"></a>
 ## :maple_leaf: Окружение
 - [x] GitHub, Jenkins, сервер на Ubuntu, Docker, Selenoid
 - [x] Браузер Safari был также залит в Selenoid, что удобнее и дешевле тестов на маках
 
+<a id="allweb"></a>
 ## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в  Allure report</a>
 
 ###  Главное окно
@@ -101,17 +106,20 @@
 <img title="Allure Tests" src="images/screens/allure2.jpg">
 </p>
 
+<a id="videoweb"></a>
 ## <img src="images/logo/Selenoid.svg" width="25" height="25"  alt="Selenoid"/></a> Видео прохождения тестов
 <p align="center">
 <img src="/images/video/form.gif" alt="video"/></a>
 </p>
 
+<a id="mob"></a>
 # :maple_leaf: MOBILE UI
 ## :maple_leaf: Приложение
 <p align="center">
 <img title="Wikipedia" src="images/logo/wiki.png">
 </p>
 
+<a id="casesmob"></a>
 ## :maple_leaf: Список проверок, реализованных в автотестах mobile
 
 - [x] Поиск
@@ -125,11 +133,13 @@
 - [x] Изменение названия и описания списка
 - [x] Добавление статьи в пользовательский список
 
+<a id="mobavto"></a>
 ## :maple_leaf: Подходы к автоматизации
 
 - [x] Степы. Использование аннотации step в page object. 
 - [x] Browserstack. Тесты запускаются в облачной платформе с возможностью выбора мобильного устройства.
 
+<a id="allmob"></a>
 ## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в  Allure report</a>
 ###  Главное окно
 
@@ -149,17 +159,20 @@
 <img title="Browserstack" src="images/screens/browserstack.jpg">
 </p>
 
+<a id="videomob"></a>
 ## <img src="images/logo/Selenoid.svg" width="25" height="25"  alt="Selenoid"/></a> Видео прохождения мобильных тестов
 <p align="center">
 <img src="/images/video/wiki.gif" alt="video"/></a>
 </p>
 
+<a id="back"></a>
 # :maple_leaf: BACKEND
 ## :maple_leaf: Сайт
 <p align="center">
 <img title="Reqres" src="images/logo/reqres.png">
 </p>
 
+<a id="caseback"></a>
 ## :maple_leaf: Список проверок, реализованных в автотестах backend
 
 - [x] Успешная регистрация
@@ -171,10 +184,12 @@
 - [x] Запрашиваем данные по несуществующему пользователю № 23
 - [x] Обновляем пользователя №2
 
+<a id="backavto"></a>
 ## :maple_leaf: Подходы к автоматизации
 
 - [x] Lombok. Bспользуется для сокращения количества шаблонного кода.
 
+<a id="allback"></a>
 ## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в  Allure report</a>
 ###  Главное окно
 
