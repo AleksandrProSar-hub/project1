@@ -4,8 +4,10 @@ import backend.Model.RequestModelRegister;
 import backend.Model.RequestModelUpdateUser;
 import backend.Model.ResponseModel;
 import backend.Model.ResponseModelSingleUser;
+import io.qameta.allure.Feature;
 import io.qameta.allure.restassured.AllureRestAssured;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Base64;
@@ -20,6 +22,8 @@ public class BackendTests {
 
     @DisplayName("Успешная регистрация")
     @Test
+    @Feature("Регистрация")
+    @Tag("BACKEND")
     void reqresRegisterSuccessful() {
         RequestModelRegister bodyModelLombok = new RequestModelRegister();
         bodyModelLombok.setEmail("eve.holt@reqres.in");
@@ -43,6 +47,8 @@ public class BackendTests {
 
     @DisplayName("Неуспешная регистрация. Не указываем пароль")
     @Test
+    @Feature("Регистрация")
+    @Tag("BACKEND")
     void reqresRegisterUnsuccessful() {
         RequestModelRegister bodyModelLombok = new RequestModelRegister();
         bodyModelLombok.setEmail("sydney@fife");
@@ -62,7 +68,8 @@ public class BackendTests {
 
     @DisplayName("Успешный вход")
     @Test
-
+    @Feature("Авторизация")
+    @Tag("BACKEND")
     void reqresLoginSuccessful() {
         RequestModelRegister bodyModelLombok = new RequestModelRegister();
         bodyModelLombok.setEmail("eve.holt@reqres.in");
@@ -83,6 +90,8 @@ public class BackendTests {
 
     @DisplayName("Неуспешный вход")
     @Test
+    @Feature("Авторизация")
+    @Tag("BACKEND")
     void reqresLoginUnsuccessful() {
         RequestModelRegister bodyModelLombok = new RequestModelRegister();
         bodyModelLombok.setEmail("peter@klaven");
@@ -103,6 +112,8 @@ public class BackendTests {
 
     @DisplayName("Страница пользователей №2")
     @Test
+    @Feature("Страницы пользователей")
+    @Tag("BACKEND")
     void reqresListUsers() {
 
         ResponseModel modelResponseLombok = given()
@@ -136,6 +147,8 @@ public class BackendTests {
 
     @DisplayName("Запрашиваем данные по пользователю №2")
     @Test
+    @Feature("Пользователи")
+    @Tag("BACKEND")
     void reqresUser2() {
 
         ResponseModelSingleUser modelResponseLombok = given()
@@ -162,6 +175,8 @@ public class BackendTests {
 
     @DisplayName("Запрашиваем данные по несуществующему пользователю № 23")
     @Test
+    @Feature("Пользователи")
+    @Tag("BACKEND")
     void reqresUser23() {
 
         ResponseModelSingleUser modelResponseLombok = given()
@@ -180,6 +195,8 @@ public class BackendTests {
 
     @DisplayName("Обновляем пользователя №2")
     @Test
+    @Feature("Пользователи")
+    @Tag("BACKEND")
     void reqresUpdatedUser2() {
         RequestModelUpdateUser bodyModelLombok = new RequestModelUpdateUser();
         bodyModelLombok.setName("morpheus");
