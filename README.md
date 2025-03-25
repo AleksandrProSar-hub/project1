@@ -29,7 +29,8 @@
 <a href="https://appium.github.io/appium-inspector/2024.12/"><img src="images/logo/appiuninsp1.png" width="50" height="50"  alt="Appium Inspector"/></a>
 <a href="https://www.vysor.io/"><img src="images/logo/vysor.png" width="50" height="50"  alt="Vysor"/></a>
 <a href="https://ubuntu.com/"><img src="images/logo/Ubuntu1.png" width="50" height="50"  alt="Ubuntu"/></a>
-<a href="https://www.docker.com/"><img src="images/logo/docker-mark-blue.png" width="50" height="50"  alt="Docker"/></a>    
+<a href="https://www.docker.com/"><img src="images/logo/docker-mark-blue.png" width="50" height="50"  alt="Docker"/></a> 
+<a href="https://www.browserstack.com/"><img src="images/logo/browserstack.svg" width="50" height="50"  alt="Browserstack"/></a> 
 </p>
 
 `Java` - язык программирования. \
@@ -45,6 +46,15 @@
 
 
 # :maple_leaf: WEB UI
+## :maple_leaf: Сайт для основных тестов
+<p align="center">
+<img title="Wildberries" src="images/logo/wildberries1.svg">
+</p>
+
+## :maple_leaf: Сайт для теста на заполнение формы регистрации
+<p align="center">
+<img title="Toolsqa" src="images/logo/toolsqa.png">
+</p>
 
 ## :maple_leaf: Список проверок, реализованных в автотестах web
 
@@ -85,5 +95,75 @@
 <p align="center">
 <img src="/images/video/form.gif" alt="video"/></a>
 </p>
+
+# :maple_leaf: MOBILE UI
+## :maple_leaf: Приложение
+<p align="center">
+<img title="Wikipedia" src="images/logo/wiki.png">
+</p>
+
+## :maple_leaf: Список проверок, реализованных в автотестах mobile
+
+- [x] Поиск
+- [x] Переход в Сохраненные
+- [x] Переход в Найти
+- [x] Переход в Правки
+- [x] Переход в Ещё
+- [x] Добавление статьи в список по умолчанию
+- [x] Создание нового списка
+- [x] Удаление списка
+- [x] Изменение названия и описания списка
+- [x] Добавление статьи в пользовательский список
+
+## :maple_leaf: Подходы к автоматизации
+
+- [x] Степы. Использование аннотации step в page object. 
+- [x] Browserstack. Тесты запускаются в облачной платформе с возможностью выбора мобильного устройства.
+
+## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в  Allure report</a>
+###  Главное окно
+
+<p align="center">
+<img title="Allure Overview Dashboard" src="images/screens/allure1mob.jpg">
+</p>
+
+###  Тесты
+
+<p align="center">
+<img title="Allure Tests" src="images/screens/allure2mob.jpg">
+</p>
+
+###  Browserstack
+
+<p align="center">
+<img title="Browserstack" src="images/screens/browserstack.jpg">
+</p>
+
+## <img src="images/logo/Selenoid.svg" width="25" height="25"  alt="Selenoid"/></a> Видео прохождения мобильных тестов
+<p align="center">
+<img src="/images/video/wiki.gif" alt="video"/></a>
+</p>
+
+# :maple_leaf: BACKEND
+## :maple_leaf: Сайт
+<p align="center">
+<img title="Reqres" src="images/logo/reqres.png">
+</p>
+
+## :maple_leaf: Список проверок, реализованных в автотестах backend
+
+- [x] Успешная регистрация
+- [x] Неуспешная регистрация. Не указываем пароль
+- [x] Успешный вход
+- [x] Неуспешный вход
+- [x] Получение данных со страницы пользователей №2
+- [x] Запрашиваем данные по пользователю №2
+- [x] Запрашиваем данные по несуществующему пользователю № 23
+- [x] Обновляем пользователя №2
+
+## :maple_leaf: Подходы к автоматизации
+
+- [x] Lombok. Bспользуется для сокращения количества шаблонного кода. 
+
 
 [Вернуться к оглавлению ⬆](#Ссылка)
